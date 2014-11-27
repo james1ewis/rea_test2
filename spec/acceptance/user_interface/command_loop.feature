@@ -3,16 +3,15 @@ Feature: UI Command Loop
   As a user
   I want a command loop in which to enter commands
 
-  Scenario: Accepting commands in a loop
-    Given I have started the simulator
-    And I have entered START into the command line
-    And the output on screen is: 'Enter Command: '
-    When I enter something
-    Then the output on screen should be: 'Enter Command: '
+  Scenario: Exciting from the command loop
+    Given I run `my-app`
+    And I type "START"
+    When I type "EXIT"
+    Then the exit status should be 0
 
-  Scenario: Exiting the loop
-    Given I have started the simulator
-    And I have entered START into the command line
-    And the output on screen is: 'Enter Command: '
-    When I enter EXIT
-    Then the system should exit
+  Scenario: Entering 2 commands in a loop
+    Given I run `my-app`
+    And I type "START"
+    When I type "REPORT"
+    And I type "REPORT"
+    Then the output should contain "Enter Command: "

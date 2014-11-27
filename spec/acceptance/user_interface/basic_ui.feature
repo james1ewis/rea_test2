@@ -3,15 +3,17 @@ Feature: Basic UI
   As a user
   I want a basic command line UI
 
-  Scenario: Exit the UI
-    Given I have loaded the simulator
-    And the UI has displayed the following message: 'Enter EXIT to exit at anytime'
-    When I enter EXIT into the command line
-    Then the program should exit
+  Scenario: Display the basic UI
+    When I run `my-app`
+    Then the output should contain "Enter EXIT to exit at anytime"
+    And the output should contain "Enter START to start the simulator"
 
-  Scenario: Start the Command Loop
-    Given I have loaded the simulator
-    And the UI has displayed the following message: 'Enter START to start the simulator'
-    When I enter START into the command line
-    Then the Command Loop should begin
-    And the message: 'Enter Command: ' should be displayed
+  Scenario: Exit the basic UI
+    Given I run `my-app`
+    When I type "EXIT"
+    Then the exit status should be 0
+
+  Scenario: Start the command loop
+    Given I run `my-app`
+    When I type "START"
+    Then the output should contain "Enter Command: "

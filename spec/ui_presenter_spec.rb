@@ -10,6 +10,7 @@ describe UIPresenter do
       fake_stdin = double('$stdin')
 
       expect(fake_stdout).to receive(:puts).with('Enter EXIT to exit at anytime')
+      expect(fake_stdout).to receive(:puts).with('Enter START to start the simulator')
 
       ui_presenter = UIPresenter.new stdout: fake_stdout,
                                      stdin: fake_stdin

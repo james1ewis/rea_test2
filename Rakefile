@@ -18,7 +18,7 @@ task :build do
   chmod 0755, 'bin/robot_simulator.rb'
   mv 'bin/robot_simulator.rb', 'bin/robot_simulator'
   # check $PATH contains /usr/local/bin, create if not there...
-  safe_ln 'bin/robot_simulator', '/usr/local/bin'
+  safe_ln '-f', 'bin/robot_simulator', '/usr/local/bin'
 end
 
 task :default => :specs

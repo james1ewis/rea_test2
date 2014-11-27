@@ -6,7 +6,7 @@ describe ReaTest::Application do
 
     it 'instantiates the user interface' do
       ui_presenter = double('UIPresenter')
-      expect(ui_presenter).to receive(:run).with($stdout, $stdin)
+      expect(ui_presenter).to receive(:run)
 
       application = ReaTest::Application.new ui_presenter: ui_presenter
 

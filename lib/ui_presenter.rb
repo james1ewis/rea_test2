@@ -1,7 +1,7 @@
 class UIPresenter
   def initialize(**args)
-    @stdout = args[:stdout]
-    @stdin = args[:stdin]
+    @stdout = args.fetch(:stdout, $stdout)
+    @stdin = args.fetch(:stdin, $stdin)
   end
 
   def run

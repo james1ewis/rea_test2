@@ -29,7 +29,7 @@ describe UIPresenter do
                                      stdin: fake_stdin
 
       exit_code = ui_presenter.run
-      
+
       expect(exit_code).to eq(0)
     end
 

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rspec'
 gem 'cucumber'
-gem 'pry'
+gem 'aruba'
 gem 'guard'
 gem 'rake'
 gem 'rubocop'

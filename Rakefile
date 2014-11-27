@@ -13,6 +13,11 @@ task :specs do
   RSpec::Core::RakeTask.new(:specs)
 end
 
+task :tests do
+  Rake::Task[:specs].invoke
+  Rake::Task[:features].invoke
+end
+
 task :build do
   copy_file 'lib/robot_simulator.rb', 'bin/robot_simulator.rb'
   chmod 0755, 'bin/robot_simulator.rb'
@@ -21,4 +26,4 @@ task :build do
   safe_ln '-f', 'bin/robot_simulator', '/usr/local/bin'
 end
 
-task :default => :specs
+task :default => :tests

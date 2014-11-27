@@ -7,5 +7,6 @@ class UIPresenter
   def run
     @stdout.puts 'Enter EXIT to exit at anytime'
     @stdout.puts 'Enter START to start the simulator'
+    @stdin.chomp
   end
 end

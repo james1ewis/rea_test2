@@ -18,17 +18,19 @@ describe UIPresenter do
       ui_presenter.run
     end
 
-    it 'reads initial command from the user' do
+    it 'reads exit command from the user' do
       fake_stdout = double('$stdout')
       fake_stdin = double('$stdin')
 
       allow(fake_stdout).to receive(:puts)
-      expect(fake_stdin).to receive(:chomp)
+      expect(fake_stdin).to receive(:chomp) { 'EXIT' }
 
       ui_presenter = UIPresenter.new stdout: fake_stdout,
                                      stdin: fake_stdin
 
-      ui_presenter.run
+      exit_code = ui_presenter.run
+      
+      expect(exit_code).to eq(0)
     end
 
   end

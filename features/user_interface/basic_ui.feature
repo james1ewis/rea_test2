@@ -9,11 +9,11 @@ Feature: Basic UI
     And the output should contain "Enter START to start the simulator"
 
   Scenario: Exit the basic UI
-    Given I run `robot_simulator`
+    Given I run `robot_simulator` interactively
     When I type "EXIT"
     Then the exit status should be 0
 
   Scenario: Start the command loop
-    Given I run `robot_simulator`
+    Given I run `robot_simulator` interactively
     When I type "START"
     Then the output should contain "Enter Command: "

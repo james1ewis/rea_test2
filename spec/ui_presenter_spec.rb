@@ -23,7 +23,7 @@ describe UIPresenter do
       fake_stdin = double('$stdin')
 
       allow(fake_stdout).to receive(:puts)
-      expect(fake_stdin).to receive(:chomp) { 'EXIT' }
+      expect(fake_stdin).to receive(:gets) { "EXIT\n" }
 
       ui_presenter = UIPresenter.new stdout: fake_stdout,
                                      stdin: fake_stdin

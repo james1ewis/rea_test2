@@ -1,9 +1,10 @@
 require_relative 'support/spec_helper'
 
-describe Application do
+describe ReaTest::Application do
 
-  it 'should do something' do
+  let(:ui_presenter) { double('UIPresenter') }
 
-    true.should == false
+  it 'instantiates the user interface' do
+    expect(ui_presenter).to receive(:run).with($stdout, $stdin)
   end
 end

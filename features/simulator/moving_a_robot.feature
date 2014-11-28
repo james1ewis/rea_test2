@@ -11,3 +11,12 @@ Feature: Moving a robot
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "1,3,NORTH"
+
+  Scenario: Moving a robot one unit south
+    When I run `robot_simulator` interactively
+    And I type "START"
+    And I type "PLACE 1,2,SOUTH"
+    And I type "MOVE"
+    And I type "REPORT"
+    And I close the stdin stream
+    Then the output should contain "1,1,SOUTH"

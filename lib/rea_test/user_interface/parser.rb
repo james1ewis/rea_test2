@@ -6,9 +6,14 @@ module ReaTest
 
     class Parser
       def parse(text)
-        return Command.new type: :report if text == 'REPORT'
-        else return Command.new type: :place,
-                                parameters: { position: Domain::Position.new(1, 2, :north) }
+
+        type = text.split(/\s/)[0]
+
+        case type
+        when 'REPORT' then Command.new type: :report
+        when 'PLACE' then Command.new type: :place,
+                                      parameters: { position: Domain::Position.new(1, 2, :north) }
+        end
       end
     end
 

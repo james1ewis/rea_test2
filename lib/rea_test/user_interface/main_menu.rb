@@ -15,7 +15,7 @@ module ReaTest
         @stdout.puts 'Enter START to start the simulator'
         user_input = @stdin.gets.chomp
 
-        @command_loop.start unless user_input =~ /EXIT/
+        @command_loop.start unless user_input == 'EXIT'
       end
     end
 

@@ -6,9 +6,7 @@ Feature: Placing a robot
   Scenario: Placing a robot within the table bounds
     When I run `robot_simulator` interactively
     And I type "START"
-    And I type ""
     And I type "PLACE 1,2,NORTH"
-    And I type ""
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "1,2,NORTH"
@@ -16,9 +14,7 @@ Feature: Placing a robot
   Scenario: Placing a robot outside the table bounds
     When I run `robot_simulator` interactively
     And I type "START"
-    And I type ""
     And I type "PLACE -1,2,NORTH"
-    And I type ""
     And I type "REPORT"
     And I close the stdin stream
     Then the output should not contain "1,2,NORTH"

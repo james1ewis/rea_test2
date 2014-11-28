@@ -26,7 +26,7 @@ module ReaTest
       end
 
       private
-      
+
       def user_input_exit?(user_input)
         user_input == 'EXIT'
       end

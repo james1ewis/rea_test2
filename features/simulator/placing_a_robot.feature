@@ -17,4 +17,4 @@ Feature: Placing a robot
     And I type "PLACE -1,2,NORTH"
     And I type "REPORT"
     And I close the stdin stream
-    Then the output should not contain "1,2,NORTH"
+    Then the output should not contain "-1,2,NORTH"

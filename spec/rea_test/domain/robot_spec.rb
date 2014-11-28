@@ -6,7 +6,7 @@ describe ReaTest::Domain::Robot do
 
     it 'update the robots current position' do
       robot = ReaTest::Domain::Robot.new
-      position = ReaTest::Domain::Position(1,2,:north)
+      position = ReaTest::Domain::Position.new(1,2,:north)
 
       robot.place(position)
 

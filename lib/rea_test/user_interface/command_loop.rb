@@ -1,5 +1,4 @@
-require_relative 'parser'
-require_relative '../domain/simulator'
+require_relative 'command_executor'
 
 module ReaTest
   module UserInterface
@@ -8,8 +7,7 @@ module ReaTest
       def initialize(**args)
         @stdout = args.fetch(:stdout, $stdout)
         @stdin = args.fetch(:stdin, $stdin)
-        @parser = args.fetch(:parser, Parser.new)
-        @simulator = args.fetch(:simulator, Domain::Simulator.new)
+        @command_executor = args.fetch(:command_executor, CommandExecutor.new)
       end
 
       def start
@@ -21,19 +19,11 @@ module ReaTest
 
           break if user_input_exit? user_input
 
-          execute_command(@parser.parse(user_input))
+          @command_executor.execute(user_input)
         end
       end
 
       private
-
-      def execute_command(command)
-        case command.type
-        when :place then @simulator.place(command.parameters[:position])
-        when :report then puts @simulator.report
-        when :move then @simulator.move
-        end
-      end
 
       def user_input_exit?(user_input)
         user_input == 'EXIT'

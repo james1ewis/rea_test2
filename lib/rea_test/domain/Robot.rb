@@ -13,6 +13,10 @@ module ReaTest
       def place(position)
         @position = position unless @table.out_of_bounds? position
       end
+
+      def move
+        @position = Position.new(@position.x, @position.y + 1, @position.heading)
+      end
     end
 
   end

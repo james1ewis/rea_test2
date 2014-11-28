@@ -7,6 +7,10 @@ module ReaTest
       def place(position)
         @position = position
       end
+
+      def report
+        @position
+      end
     end
 
   end

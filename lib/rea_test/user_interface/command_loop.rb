@@ -21,16 +21,18 @@ module ReaTest
 
           break if user_input_exit? user_input
 
-          command = @parser.parse(user_input)
-
-          case command.type
-          when :place then @simulator.place(command.parameters[:position])
-          when :report then puts @simulator.report
-          end
+          execute_command(@parser.parse(user_input))
         end
       end
 
       private
+
+      def execute_command(command)
+        case command.type
+        when :place then @simulator.place(command.parameters[:position])
+        when :report then puts @simulator.report
+        end
+      end
 
       def user_input_exit?(user_input)
         user_input =~ /EXIT/

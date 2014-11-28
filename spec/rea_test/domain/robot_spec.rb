@@ -22,9 +22,8 @@ describe ReaTest::Domain::Robot do
       position = ReaTest::Domain::Position.new(1, 2, :north)
 
       robot.place(position)
-      result = robot.report
 
-      expect(result).to eq(position)
+      expect { robot.report }.to output('1,2,NORTH').to_stdout
     end
 
   end

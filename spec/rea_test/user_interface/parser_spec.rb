@@ -18,7 +18,7 @@ describe ReaTest::UserInterface::Parser do
       command = parser.parse('PLACE 1,2,NORTH')
 
       expect(command).to be_a(ReaTest::Domain::Command)
-      expect(command.type).to eq(:report)
+      expect(command.type).to eq(:place)
       expect(command.parameters).to be_a(Hash)
       expect(command.parameters.count).to eq(1)
       expect(command.parameters[:position]).to be_a(ReaTest::Domain::Position)

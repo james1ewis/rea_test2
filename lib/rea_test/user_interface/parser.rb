@@ -15,6 +15,7 @@ module ReaTest
         when 'REPORT' then Command.new type: :report
         when 'PLACE' then Command.new type: :place,
                                       parameters: { position: position }
+        when 'MOVE' then Command.new type: :move
         end
       end
 

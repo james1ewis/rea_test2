@@ -7,13 +7,25 @@ module ReaTest
     class Parser
       def parse(text)
 
-        type = text.split(/\s/)[0]
+        tokens = text.split(/\s/)
+        type = tokens[0]
+        position = get_position_from(tokens[1]) unless tokens.count == 1
 
         case type
         when 'REPORT' then Command.new type: :report
         when 'PLACE' then Command.new type: :place,
-                                      parameters: { position: Domain::Position.new(1, 2, :north) }
+                                      parameters: { position: position }
         end
+      end
+
+      private
+
+      def get_position_from(text)
+        position_tokens = text.split(/,/)
+
+        Domain::Position.new(position_tokens[0].to_i,
+                             position_tokens[1].to_i,
+                             position_tokens[2].to_s.downcase.to_sym)
       end
     end
 

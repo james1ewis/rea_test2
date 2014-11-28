@@ -5,7 +5,7 @@ describe ReaTest::UserInterface::Parser do
   describe '#parse' do
 
     it 'parses a report command' do
-      parser = Parser.new
+      parser = ReaTest::UserInterface::Parser.new
       command = parser.parse('REPORT')
 
       expect(command).to be_a(ReaTest::Domain::Command)

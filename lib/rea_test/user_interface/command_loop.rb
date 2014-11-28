@@ -31,6 +31,7 @@ module ReaTest
         case command.type
         when :place then @simulator.place(command.parameters[:position])
         when :report then puts @simulator.report
+        when :move then @simulator.move
         end
       end
 

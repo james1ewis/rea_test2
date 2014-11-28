@@ -7,7 +7,7 @@ module ReaTest
       end
 
       def execute(command)
-
+        @robot.place(command.parameters[:position])
       end
     end
 

@@ -30,4 +30,17 @@ describe ReaTest::Domain::Simulator do
 
   end
 
+  describe '#move' do
+
+    it 'moves the robot' do
+      robot = double('robot')
+
+      expect(robot).to receive(:move)
+
+      simulator = ReaTest::Domain::Simulator.new robot: robot
+      simulator.move
+    end
+
+  end
+
 end

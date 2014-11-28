@@ -1,8 +1,9 @@
 require_relative 'support/spec_helper'
 
-describe ReaTest::UIPresenter do
+describe ReaTest::UserInterface::Menu do
 
   describe '#run' do
+
 
     it 'displays options to the user' do
       fake_stdout = double('$stdout')
@@ -12,8 +13,8 @@ describe ReaTest::UIPresenter do
       expect(fake_stdout).to receive(:puts).with('Enter START to start the simulator')
       allow(fake_stdin).to receive(:gets) { "EXIT\n" }
 
-      ui_presenter = ReaTest::UIPresenter.new stdout: fake_stdout,
-                                              stdin: fake_stdin
+      ui_presenter = ReaTest::UserInterface::Menu.new stdout: fake_stdout,
+                                                      stdin: fake_stdin
 
       ui_presenter.run
     end
@@ -25,8 +26,8 @@ describe ReaTest::UIPresenter do
       allow(fake_stdout).to receive(:puts)
       expect(fake_stdin).to receive(:gets) { "EXIT\n" }
 
-      ui_presenter = ReaTest::UIPresenter.new stdout: fake_stdout,
-                                              stdin: fake_stdin
+      ui_presenter = ReaTest::UserInterface::Menu.new stdout: fake_stdout,
+                                                      stdin: fake_stdin
 
       ui_presenter.run
     end
@@ -41,8 +42,8 @@ describe ReaTest::UIPresenter do
       expect(fake_stdin).to receive(:gets) { "REPORT\n" }
       expect(fake_stdin).to receive(:gets) { "EXIT\n" }
 
-      ui_presenter = ReaTest::UIPresenter.new stdout: fake_stdout,
-                                              stdin: fake_stdin
+      ui_presenter = ReaTest::UserInterface::Menu.new stdout: fake_stdout,
+                                                      stdin: fake_stdin
 
       ui_presenter.run
     end

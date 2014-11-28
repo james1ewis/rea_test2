@@ -4,13 +4,20 @@ describe ReaTest::Domain::Robot do
 
   describe '#place' do
 
-    it 'update the robots current position' do
-      robot = ReaTest::Domain::Robot.new
-      position = ReaTest::Domain::Position.new(1, 2, :north)
+    context 'the position is within the table bounds' do
 
-      robot.place(position)
+      it 'update the robots current position' do
+        table = double('Table')
+        position = ReaTest::Domain::Position.new(1, 2, :north)
 
-      expect(robot.position).to eq(position)
+        expect(table).to receive(:out_of_bounds?).with(position) { false }
+
+        robot = ReaTest::Domain::Robot.new table: table
+        robot.place(position)
+
+        expect(robot.position).to eq(position)
+      end
+
     end
 
   end

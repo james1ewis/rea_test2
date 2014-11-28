@@ -6,6 +6,10 @@ module ReaTest
       def initialize(x, y, heading)
         @x, @y, @heading = x, y, heading
       end
+
+      def to_s
+        "#{@x},#{@y},#{@heading.to_s.upcase}"
+      end
     end
   end
 end

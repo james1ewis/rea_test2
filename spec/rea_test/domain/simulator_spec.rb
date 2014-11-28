@@ -22,7 +22,7 @@ describe ReaTest::Domain::Simulator do
       robot = double('robot')
       position = ReaTest::Domain::Position.new(1, 1, :north)
 
-      expect(robot).to receive(:report) { position }
+      expect(robot).to receive(:position) { position }
 
       simulator = ReaTest::Domain::Simulator.new robot: robot
       expect(simulator.report).to eq(position.to_s)

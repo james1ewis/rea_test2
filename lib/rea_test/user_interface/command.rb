@@ -1,5 +1,5 @@
 module ReaTest
-  module Domain
+  module UserInterface
 
     class Command
       attr_reader :type, :parameters

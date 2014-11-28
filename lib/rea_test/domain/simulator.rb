@@ -8,10 +8,12 @@ module ReaTest
         @robot = args.fetch(:robot, Robot.new)
       end
 
-      def execute(command)
+      def place(position)
+        @robot.place(position)
+      end
 
-        @robot.place(command.parameters[:position]) if command.type == :place
-        @robot.report if command.type == :report
+      def report
+        @robot.position.to_s
       end
     end
 

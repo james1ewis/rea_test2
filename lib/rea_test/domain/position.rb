@@ -1,5 +1,6 @@
 module ReaTest
   module Domain
+
     class Position
       attr_reader :x, :y, :heading
 
@@ -11,5 +12,6 @@ module ReaTest
         "#{@x},#{@y},#{@heading.to_s.upcase}"
       end
     end
+
   end
 end

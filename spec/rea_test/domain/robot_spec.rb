@@ -9,8 +9,9 @@ describe ReaTest::Domain::Robot do
       position = ReaTest::Domain::Position.new(1, 2, :north)
 
       robot.place(position)
+      result = robot.report
 
-      expect(robot.position).to eq(position)
+      expect(result).to eq(position)
     end
 
   end

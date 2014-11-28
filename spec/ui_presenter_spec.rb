@@ -47,6 +47,26 @@ describe ReaTest::UserInterface::Menu do
       ui_presenter.run
     end
 
+    it 'parses user input into a command' do
+      fake_stdout = double('$stdout')
+      fake_stdin = double('$stdin')
+      parser = double('Parser')
+
+      expect(fake_stdout).to receive(:puts).twice
+      expect(fake_stdin).to receive(:gets) { "START\n" }
+      expect(fake_stdout).to receive(:puts).twice.with('Enter Command: ')
+      expect(fake_stdin).to receive(:gets) { "REPORT\n" }
+      expect(fake_stdin).to receive(:gets) { "EXIT\n" }
+
+      expect(parser).to receive(:parse).with('REPORT')
+
+      ui_presenter = ReaTest::UserInterface::Menu.new stdout: fake_stdout,
+                                                      stdin: fake_stdin,
+                                                      parser: parser
+
+      ui_presenter.run
+    end
+
   end
 
 end

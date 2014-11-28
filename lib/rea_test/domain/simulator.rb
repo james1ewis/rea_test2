@@ -9,7 +9,9 @@ module ReaTest
       end
 
       def execute(command)
-        @robot.place(command.parameters[:position])
+
+        @robot.place(command.parameters[:position]) if command.type == :place
+        @robot.report if command.type == :report
       end
     end
 

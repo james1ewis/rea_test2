@@ -15,6 +15,10 @@ module ReaTest
       def report
         @robot.position.to_s
       end
+
+      def move
+        @robot.move
+      end
     end
 
   end

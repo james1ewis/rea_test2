@@ -1,6 +1,6 @@
 require_relative '../../support/spec_helper'
 
-describe ReaTest::UserInterface::Menu do
+describe ReaTest::UserInterface::MainMenu do
 
   describe '#run' do
 
@@ -11,8 +11,9 @@ describe ReaTest::UserInterface::Menu do
 
       expect(fake_stdout).to receive(:puts).with('Enter EXIT to exit at anytime')
       expect(fake_stdout).to receive(:puts).with('Enter START to start the simulator')
+      allow(fake_stdin).to receive(:gets) { "EXIT\n" }
 
-      ui_presenter = ReaTest::UserInterface::Menu.new stdout: fake_stdout,
+      ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
                                                       stdin: fake_stdin,
                                                       command_loop: command_loop
 
@@ -27,7 +28,7 @@ describe ReaTest::UserInterface::Menu do
       allow(fake_stdout).to receive(:puts)
       expect(fake_stdin).to receive(:gets) { "EXIT\n" }
 
-      ui_presenter = ReaTest::UserInterface::Menu.new stdout: fake_stdout,
+      ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
                                                       stdin: fake_stdin,
                                                       command_loop: command_loop
 
@@ -43,7 +44,7 @@ describe ReaTest::UserInterface::Menu do
       allow(fake_stdin).to receive(:gets) { "START\n" }
       expect(command_loop).to receive(:start)
 
-      ui_presenter = ReaTest::UserInterface::Menu.new stdout: fake_stdout,
+      ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
                                                       stdin: fake_stdin,
                                                       command_loop: command_loop
 

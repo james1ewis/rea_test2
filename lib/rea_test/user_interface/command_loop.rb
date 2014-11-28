@@ -1,3 +1,6 @@
+require_relative 'parser'
+require_relative '../domain/simulator'
+
 module ReaTest
   module UserInterface
 
@@ -30,7 +33,7 @@ module ReaTest
       private
 
       def user_input_exit?(user_input)
-        user_input == 'EXIT'
+        user_input =~ /EXIT/
       end
     end
 

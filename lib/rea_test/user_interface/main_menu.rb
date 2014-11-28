@@ -1,14 +1,13 @@
-require_relative 'parser'
-require_relative '../domain/simulator'
+require_relative 'command_loop'
 
 module ReaTest
   module UserInterface
 
-    class Menu
+    class MainMenu
       def initialize(**args)
         @stdout = args.fetch(:stdout, $stdout)
         @stdin = args.fetch(:stdin, $stdin)
-        @command_loop = args.fetch(:command_loop)
+        @command_loop = args.fetch(:command_loop, CommandLoop.new)
       end
 
       def run

@@ -10,6 +10,7 @@ module ReaTest
         @stdin = args.fetch(:stdin, $stdin)
         @parser = args.fetch(:parser, Parser.new)
         @simulator = args.fetch(:simulator, Domain::Simulator.new)
+        @command_loop = args.fetch(:command_loop)
       end
 
       def run
@@ -17,20 +18,7 @@ module ReaTest
         @stdout.puts 'Enter START to start the simulator'
         user_input = @stdin.gets.chomp
 
-        until user_input_exit? user_input
-          @stdout.puts 'Enter Command: '
-          user_input = @stdin.gets.chomp
-
-          break if user_input_exit? user_input
-
-          command = @parser.parse(user_input)
-
-          case command.type
-          when :place then @simulator.place(command.parameters[:position])
-          when :report then puts @simulator.report
-          end
-        end
-
+        @command_loop.start unless user_input =~ /EXIT/
       end
 
       private

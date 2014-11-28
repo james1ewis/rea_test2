@@ -23,7 +23,7 @@ describe ReaTest::Domain::Robot do
 
       robot.place(position)
 
-      expect { robot.report }.to output('1,2,NORTH').to_stdout
+      expect { robot.report }.to output(/1,2,NORTH/).to_stdout
     end
 
   end

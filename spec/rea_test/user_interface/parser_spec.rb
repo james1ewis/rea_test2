@@ -27,6 +27,15 @@ describe ReaTest::UserInterface::Parser do
       expect(command.parameters[:position].heading).to eq(:north)
     end
 
+    it 'parses a move command' do
+      parser = ReaTest::UserInterface::Parser.new
+      command = parser.parse('MOVE')
+
+      expect(command).to be_a(ReaTest::UserInterface::Command)
+      expect(command.type).to eq(:move)
+      expect(command.parameters).to be_nil
+    end
+
   end
 
 end

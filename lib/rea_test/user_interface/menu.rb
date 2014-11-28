@@ -20,7 +20,7 @@ module ReaTest
         until user_input == 'EXIT'
           @stdout.puts 'Enter Command: '
           user_input = @stdin.gets.chomp
-          @parser.parse(user_input) unless user_input == 'EXIT'
+          @simulator.execute(@parser.parse(user_input)) unless user_input == 'EXIT'
         end
 
       end

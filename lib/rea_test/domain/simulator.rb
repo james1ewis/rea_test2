@@ -1,9 +1,11 @@
+require_relative 'Robot'
+
 module ReaTest
   module Domain
 
     class Simulator
       def initialize(**args)
-        @robot = args.fetch(:robot, nil)
+        @robot = args.fetch(:robot, Robot.new)
       end
 
       def execute(command)

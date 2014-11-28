@@ -20,7 +20,15 @@ module ReaTest
         until user_input_exit? user_input
           @stdout.puts 'Enter Command: '
           user_input = @stdin.gets.chomp
-          @simulator.execute(@parser.parse(user_input)) unless user_input_exit? user_input
+
+          break if user_input_exit? user_input
+
+          command = @parser.parse(user_input)
+
+          case command.type
+          when :place then @simulator.place(command.parameters[:position])
+          when :report then puts @simulator.report
+          end
         end
 
       end

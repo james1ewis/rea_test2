@@ -57,7 +57,7 @@ describe ReaTest::UserInterface::Menu do
       expect(fake_stdin).to receive(:gets) { "START\n" }
       expect(fake_stdout).to receive(:puts).twice.with('Enter Command: ')
       expect(fake_stdin).to receive(:gets) { "REPORT\n" }
-      expect(parser).to receive(:parse).with('REPORT')
+      expect(parser).to receive(:parse).with('REPORT') { ReaTest::UserInterface::Command.new type: :report }
       expect(simulator).to receive(:report)
       expect(fake_stdin).to receive(:gets) { "EXIT\n" }
 

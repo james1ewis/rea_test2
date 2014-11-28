@@ -2,7 +2,7 @@ module ReaTest
   module UserInterface
 
     class Parser
-      def parse(command)
+      def parse(text)
 
       end
     end

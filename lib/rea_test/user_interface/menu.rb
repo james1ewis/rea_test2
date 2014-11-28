@@ -13,12 +13,12 @@ module ReaTest
       def run
         @stdout.puts 'Enter EXIT to exit at anytime'
         @stdout.puts 'Enter START to start the simulator'
-        command = @stdin.gets.chomp
+        user_input = @stdin.gets.chomp
 
-        until command == 'EXIT'
+        until user_input == 'EXIT'
           @stdout.puts 'Enter Command: '
-          command = @stdin.gets.chomp
-          @parser.parse(command)
+          user_input = @stdin.gets.chomp
+          @parser.parse(user_input) unless user_input == 'EXIT'
         end
 
       end

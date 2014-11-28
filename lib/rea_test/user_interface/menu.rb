@@ -1,4 +1,5 @@
 require_relative 'parser'
+require_relative '../domain/simulator'
 
 module ReaTest
   module UserInterface
@@ -8,6 +9,7 @@ module ReaTest
         @stdout = args.fetch(:stdout, $stdout)
         @stdin = args.fetch(:stdin, $stdin)
         @parser = args.fetch(:parser, Parser.new)
+        @simulator = args.fetch(:simulator, Domain::Simulator.new)
       end
 
       def run

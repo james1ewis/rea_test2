@@ -16,6 +16,16 @@ describe ReaTest::Domain::Simulator do
       simulator.execute(command)
     end
 
+    it 'executes a report command' do
+      robot = double('robot')
+      command = ReaTest::Domain::Command.new type: :report
+
+      expect(robot).to receive(:report)
+
+      simulator = ReaTest::Domain::Simulator.new robot: robot
+      simulator.execute(command)
+    end
+
   end
 
 end

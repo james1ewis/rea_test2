@@ -4,7 +4,7 @@ Feature: Basic UI
   I want a basic command line UI
 
   Scenario: Display the basic UI
-    When I run `robot_simulator`
+    When I run `robot_simulator` interactively
     Then the output should contain "Enter EXIT to exit at anytime"
     And the output should contain "Enter START to start the simulator"
 

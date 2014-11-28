@@ -4,7 +4,6 @@ describe ReaTest::UserInterface::Menu do
 
   describe '#run' do
 
-
     it 'displays options to the user' do
       fake_stdout = double('$stdout')
       fake_stdin = double('$stdin')

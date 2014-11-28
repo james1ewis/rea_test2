@@ -5,15 +5,18 @@ Feature: Basic UI
 
   Scenario: Display the basic UI
     When I run `robot_simulator` interactively
+    And I close the stdin stream
     Then the output should contain "Enter EXIT to exit at anytime"
     And the output should contain "Enter START to start the simulator"
 
   Scenario: Exit the basic UI
-    Given I run `robot_simulator` interactively
-    When I type "EXIT"
+    When I run `robot_simulator` interactively
+    And I type "EXIT"
+    And I close the stdin stream
     Then the exit status should be 0
 
   Scenario: Start the command loop
-    Given I run `robot_simulator` interactively
-    When I type "START"
+    When I run `robot_simulator` interactively
+    And I type "START"
+    And I close the stdin stream
     Then the output should contain "Enter Command: "

@@ -28,9 +28,7 @@ describe ReaTest::UIPresenter do
       ui_presenter = ReaTest::UIPresenter.new stdout: fake_stdout,
                                               stdin: fake_stdin
 
-      exit_code = ui_presenter.run
-
-      expect(exit_code).to eq(0)
+      ui_presenter.run
     end
 
     it 'reads start command from user and starts input loop' do

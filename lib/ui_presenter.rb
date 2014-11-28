@@ -10,7 +10,11 @@ module ReaTest
       @stdout.puts 'Enter START to start the simulator'
       command = @stdin.gets.chomp
 
-      return 0 if command.eql? 'EXIT'
+      until command == 'EXIT'
+        @stdout.puts 'Enter Command: '
+        command = @stdin.gets.chomp
+      end
+
     end
 
   end

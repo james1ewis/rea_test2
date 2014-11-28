@@ -9,7 +9,7 @@ module ReaTest
       end
 
       def report
-        @position
+        puts @position
       end
     end
 

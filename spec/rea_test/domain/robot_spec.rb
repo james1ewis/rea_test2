@@ -66,6 +66,19 @@ describe ReaTest::Domain::Robot do
       expect(robot.position.y).to eq(0)
     end
 
+    it 'increments robots position heading east' do
+      table = double('Table')
+      initial_position = ReaTest::Domain::Position.new(0, 1, :east)
+
+      expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+
+      robot = ReaTest::Domain::Robot.new table: table
+      robot.place(initial_position)
+      robot.move
+
+      expect(robot.position.x).to eq(1)
+    end
+
   end
 
 end

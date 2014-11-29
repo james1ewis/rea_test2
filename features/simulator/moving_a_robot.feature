@@ -20,3 +20,12 @@ Feature: Moving a robot
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "1,1,SOUTH"
+
+  Scenario: Moving a robot one unit east
+    When I run `robot_simulator` interactively
+    And I type "START"
+    And I type "PLACE 1,2,EAST"
+    And I type "MOVE"
+    And I type "REPORT"
+    And I close the stdin stream
+    Then the output should contain "2,2,EAST"

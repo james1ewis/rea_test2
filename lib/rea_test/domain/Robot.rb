@@ -15,7 +15,10 @@ module ReaTest
       end
 
       def move
-        @position = Position.new(@position.x, @position.y + 1, @position.heading)
+        case @position.heading
+        when :north then @position = Position.new(@position.x, @position.y + 1, @position.heading)
+        when :south then @position = Position.new(@position.x, @position.y - 1, @position.heading)
+        end
       end
     end
 

@@ -18,6 +18,7 @@ module ReaTest
         case @position.heading
         when :north then @position = Position.new(@position.x, @position.y + 1, @position.heading)
         when :south then @position = Position.new(@position.x, @position.y - 1, @position.heading)
+        when :east then @position = Position.new(@position.x + 1, @position.y, @position.heading)
         end
       end
     end

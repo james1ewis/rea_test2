@@ -17,23 +17,28 @@ module ReaTest
       end
 
       def left
-        headings = [:north, :east, :south, :west]
-
-        current_heading = headings.find_index(self.position.heading)
-
-        current_heading == 0 ? current_heading = 3 : current_heading -= 1
-
-        self.position = Position.new(self.position.x, self.position.y, headings[current_heading])
+        self.position = rotate do |current_heading|
+          current_heading == 0 ? current_heading = 3 : current_heading -= 1
+          current_heading
+        end
       end
 
       def right
-        headings = [:north, :east, :south, :west]
+        self.position = rotate do |current_heading|
+          current_heading == 3 ? current_heading = 0 : current_heading += 1
+          current_heading
+        end
+      end
 
+      private
+
+      def rotate(&strategy)
+        headings = [:north, :east, :south, :west]
         current_heading = headings.find_index(self.position.heading)
 
-        current_heading == 3 ? current_heading = 0 : current_heading += 1
+        current_heading = strategy.call(current_heading)
 
-        self.position = Position.new(self.position.x, self.position.y, headings[current_heading])
+        Position.new(self.position.x, self.position.y, headings[current_heading])
       end
 
     end

@@ -17,21 +17,23 @@ module ReaTest
       end
 
       def left
-        case self.position.heading
-        when :north then self.position = Position.new(self.position.x, self.position.y, :west)
-        when :south then self.position = Position.new(self.position.x, self.position.y, :east)
-        when :east then self.position = Position.new(self.position.x, self.position.y, :north)
-        when :west then self.position = Position.new(self.position.x, self.position.y, :south)
-        end
+        headings = [:north, :east, :south, :west]
+
+        current_heading = headings.find_index(self.position.heading)
+
+        current_heading == 0 ? current_heading = 3 : current_heading -= 1
+
+        self.position = Position.new(self.position.x, self.position.y, headings[current_heading])
       end
 
       def right
-        case self.position.heading
-        when :north then self.position = Position.new(self.position.x, self.position.y, :east)
-        when :south then self.position = Position.new(self.position.x, self.position.y, :west)
-        when :east then self.position = Position.new(self.position.x, self.position.y, :south)
-        when :west then self.position = Position.new(self.position.x, self.position.y, :north)
-        end
+        headings = [:north, :east, :south, :west]
+
+        current_heading = headings.find_index(self.position.heading)
+
+        current_heading == 3 ? current_heading = 0 : current_heading += 1
+
+        self.position = Position.new(self.position.x, self.position.y, headings[current_heading])
       end
 
     end

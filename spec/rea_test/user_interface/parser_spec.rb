@@ -36,6 +36,15 @@ describe ReaTest::UserInterface::Parser do
       expect(command.parameters).to be_nil
     end
 
+    it 'parses a left command' do
+      parser = ReaTest::UserInterface::Parser.new
+      command = parser.parse('LEFT')
+
+      expect(command).to be_a(ReaTest::UserInterface::Command)
+      expect(command.type).to eq(:left)
+      expect(command.parameters).to be_nil
+    end
+
   end
 
 end

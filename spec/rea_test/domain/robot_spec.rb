@@ -47,6 +47,7 @@ describe ReaTest::Domain::Robot do
         initial_position = ReaTest::Domain::Position.new(0, 0, :north)
 
         expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+        allow(table).to receive(:out_of_bounds?) { false }
 
         robot = ReaTest::Domain::Robot.new table: table
         robot.place(initial_position)
@@ -60,6 +61,7 @@ describe ReaTest::Domain::Robot do
         initial_position = ReaTest::Domain::Position.new(0, 1, :south)
 
         expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+        allow(table).to receive(:out_of_bounds?) { false }
 
         robot = ReaTest::Domain::Robot.new table: table
         robot.place(initial_position)
@@ -73,6 +75,7 @@ describe ReaTest::Domain::Robot do
         initial_position = ReaTest::Domain::Position.new(0, 1, :east)
 
         expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+        allow(table).to receive(:out_of_bounds?) { false }
 
         robot = ReaTest::Domain::Robot.new table: table
         robot.place(initial_position)
@@ -86,6 +89,7 @@ describe ReaTest::Domain::Robot do
         initial_position = ReaTest::Domain::Position.new(1, 1, :west)
 
         expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+        allow(table).to receive(:out_of_bounds?) { false }
 
         robot = ReaTest::Domain::Robot.new table: table
         robot.place(initial_position)

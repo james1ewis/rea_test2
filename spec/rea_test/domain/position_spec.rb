@@ -11,4 +11,15 @@ describe ReaTest::Domain::Position do
 
   end
 
+  describe '#==' do
+
+    it 'tests for equality' do
+      position_one = ReaTest::Domain::Position.new(1,2,:north)
+      position_two = ReaTest::Domain::Position.new(1,2,:north)
+
+      expect(position_one == position_two).to eq(true)
+    end
+
+  end
+
 end

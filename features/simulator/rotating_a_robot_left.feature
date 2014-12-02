@@ -10,4 +10,4 @@ Feature: Rotating a robot left
     And I type "LEFT"
     And I type "REPORT"
     And I close the stdin stream
-    Then the output should contain "1,3,WEST"
+    Then the output should contain "1,2,WEST"

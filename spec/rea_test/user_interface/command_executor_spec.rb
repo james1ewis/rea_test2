@@ -44,6 +44,19 @@ describe ReaTest::UserInterface::CommandExecutor do
       command_executor.execute('MOVE')
     end
 
+    it 'passes left to the simulator' do
+      parser = double('Parser')
+      simulator = double('Simulator')
+
+      expect(parser).to receive(:parse).with('LEFT') { ReaTest::UserInterface::Command.new type: :left }
+      expect(simulator).to receive(:left)
+
+      command_executor = ReaTest::UserInterface::CommandExecutor.new parser: parser,
+                                                                     simulator: simulator
+
+      command_executor.execute('LEFT')
+    end
+
   end
 
 end

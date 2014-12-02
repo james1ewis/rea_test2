@@ -19,6 +19,10 @@ module ReaTest
       def move
         @robot.move
       end
+
+      def left
+        @robot.left
+      end
     end
 
   end

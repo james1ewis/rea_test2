@@ -22,6 +22,10 @@ module ReaTest
 
       def left
         @robot.left
+        end
+
+      def right
+        @robot.right
       end
     end
 

@@ -56,4 +56,17 @@ describe ReaTest::Domain::Simulator do
 
   end
 
+  describe '#right' do
+
+    it 'rotates the robot right' do
+      robot = double('robot')
+
+      expect(robot).to receive(:right)
+
+      simulator = ReaTest::Domain::Simulator.new robot: robot
+      simulator.right
+    end
+
+  end
+
 end

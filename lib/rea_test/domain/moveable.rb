@@ -16,6 +16,10 @@ module ReaTest
         self.position = new_position unless out_of_bounds? new_position
       end
 
+      def left
+        self.position = Position.new(self.position.x, self.position.y, :west)
+      end
+
     end
 
   end

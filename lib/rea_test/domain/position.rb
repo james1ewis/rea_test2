@@ -11,6 +11,10 @@ module ReaTest
       def to_s
         "#{@x},#{@y},#{@heading.to_s.upcase}"
       end
+
+      def ==(other)
+        return true if @x == other.x && @y == other.y && @heading == other.heading
+      end
     end
 
   end

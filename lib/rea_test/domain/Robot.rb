@@ -17,6 +17,7 @@ module ReaTest
 
       protected
 
+      # there is obviously a problem here...
       def out_of_bounds?(position)
         @table.out_of_bounds? position
       end

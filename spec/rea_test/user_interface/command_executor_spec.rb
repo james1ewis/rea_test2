@@ -57,6 +57,19 @@ describe ReaTest::UserInterface::CommandExecutor do
       command_executor.execute('LEFT')
     end
 
+    it 'passes right to the simulator' do
+      parser = double('Parser')
+      simulator = double('Simulator')
+
+      expect(parser).to receive(:parse).with('RIGHT') { ReaTest::UserInterface::Command.new type: :right }
+      expect(simulator).to receive(:right)
+
+      command_executor = ReaTest::UserInterface::CommandExecutor.new parser: parser,
+                                                                     simulator: simulator
+
+      command_executor.execute('RIGHT')
+    end
+
   end
 
 end

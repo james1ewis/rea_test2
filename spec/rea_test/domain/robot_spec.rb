@@ -181,6 +181,19 @@ describe ReaTest::Domain::Robot do
       expect(robot.position.heading).to eq(:west)
     end
 
+    it 'rotates the robot left from west' do
+      table = double('Table')
+      initial_position = ReaTest::Domain::Position.new(4, 4, :west)
+
+      allow(table).to receive(:out_of_bounds?) { false }
+
+      robot = ReaTest::Domain::Robot.new table: table
+      robot.place(initial_position)
+      robot.left
+
+      expect(robot.position.heading).to eq(:south)
+    end
+
   end
 
 end

@@ -11,3 +11,12 @@ Feature: Rotating a robot left
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "1,2,WEST"
+
+  Scenario: Rotating a robot left from west
+    When I run `robot_simulator` interactively
+    And I type "START"
+    And I type "PLACE 1,2,WEST"
+    And I type "LEFT"
+    And I type "REPORT"
+    And I close the stdin stream
+    Then the output should contain "1,2,SOUTH"

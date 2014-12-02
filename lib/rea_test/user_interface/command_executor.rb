@@ -18,6 +18,7 @@ module ReaTest
         when :report then puts @simulator.report
         when :move then @simulator.move
         when :left then @simulator.left
+        when :right then @simulator.right
         end
       end
     end

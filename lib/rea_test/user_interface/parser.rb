@@ -17,6 +17,7 @@ module ReaTest
                                       parameters: { position: position }
         when 'MOVE' then Command.new type: :move
         when 'LEFT' then Command.new type: :left
+        when 'RIGHT' then Command.new type: :right
         end
       end
 

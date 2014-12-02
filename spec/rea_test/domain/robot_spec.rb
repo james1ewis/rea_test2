@@ -40,56 +40,79 @@ describe ReaTest::Domain::Robot do
 
   describe '#move' do
 
-    it 'increments robots position heading north' do
-      table = double('Table')
-      initial_position = ReaTest::Domain::Position.new(0, 0, :north)
+    context 'the new position is within the table bounds' do
 
-      expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+      it 'increments robots position heading north' do
+        table = double('Table')
+        initial_position = ReaTest::Domain::Position.new(0, 0, :north)
 
-      robot = ReaTest::Domain::Robot.new table: table
-      robot.place(initial_position)
-      robot.move
+        expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
 
-      expect(robot.position.y).to eq(1)
+        robot = ReaTest::Domain::Robot.new table: table
+        robot.place(initial_position)
+        robot.move
+
+        expect(robot.position.y).to eq(1)
+      end
+
+      it 'increments robots position heading south' do
+        table = double('Table')
+        initial_position = ReaTest::Domain::Position.new(0, 1, :south)
+
+        expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+
+        robot = ReaTest::Domain::Robot.new table: table
+        robot.place(initial_position)
+        robot.move
+
+        expect(robot.position.y).to eq(0)
+      end
+
+      it 'increments robots position heading east' do
+        table = double('Table')
+        initial_position = ReaTest::Domain::Position.new(0, 1, :east)
+
+        expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+
+        robot = ReaTest::Domain::Robot.new table: table
+        robot.place(initial_position)
+        robot.move
+
+        expect(robot.position.x).to eq(1)
+      end
+
+      it 'increments robots position heading west' do
+        table = double('Table')
+        initial_position = ReaTest::Domain::Position.new(1, 1, :west)
+
+        expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+
+        robot = ReaTest::Domain::Robot.new table: table
+        robot.place(initial_position)
+        robot.move
+
+        expect(robot.position.x).to eq(0)
+      end
+
     end
 
-    it 'increments robots position heading south' do
-      table = double('Table')
-      initial_position = ReaTest::Domain::Position.new(0, 1, :south)
+    context 'new position is out of table bounds' do
 
-      expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+      it 'does not increment robots position heading west' do
+        table = double('Table')
+        initial_position = ReaTest::Domain::Position.new(0, 0, :west)
+        new_position = ReaTest::Domain::Position.new(-1, 0, :west)
 
-      robot = ReaTest::Domain::Robot.new table: table
-      robot.place(initial_position)
-      robot.move
+        expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
+        expect(table).to receive(:out_of_bounds?).with(new_position) { true }
 
-      expect(robot.position.y).to eq(0)
-    end
+        robot = ReaTest::Domain::Robot.new table: table
+        robot.place(initial_position)
+        robot.move
 
-    it 'increments robots position heading east' do
-      table = double('Table')
-      initial_position = ReaTest::Domain::Position.new(0, 1, :east)
+        expect(robot.position.x).to eq(0)
+      end
 
-      expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
-
-      robot = ReaTest::Domain::Robot.new table: table
-      robot.place(initial_position)
-      robot.move
-
-      expect(robot.position.x).to eq(1)
-    end
-
-    it 'increments robots position heading west' do
-      table = double('Table')
-      initial_position = ReaTest::Domain::Position.new(1, 1, :west)
-
-      expect(table).to receive(:out_of_bounds?).with(initial_position) { false }
-
-      robot = ReaTest::Domain::Robot.new table: table
-      robot.place(initial_position)
-      robot.move
-
-      expect(robot.position.x).to eq(0)
     end
 
   end

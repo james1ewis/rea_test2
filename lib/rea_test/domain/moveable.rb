@@ -17,7 +17,12 @@ module ReaTest
       end
 
       def left
-        self.position = Position.new(self.position.x, self.position.y, :west)
+        case self.position.heading
+        when :north then self.position = Position.new(self.position.x, self.position.y, :west)
+        when :south then self.position = Position.new(self.position.x, self.position.y, :east)
+        when :east then self.position = Position.new(self.position.x, self.position.y, :north)
+        when :west then self.position = Position.new(self.position.x, self.position.y, :south)
+        end
       end
 
     end

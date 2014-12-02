@@ -20,3 +20,21 @@ Feature: Rotating a robot left
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "1,2,SOUTH"
+
+  Scenario: Rotating a robot left from east
+    When I run `robot_simulator` interactively
+    And I type "START"
+    And I type "PLACE 1,2,EAST"
+    And I type "LEFT"
+    And I type "REPORT"
+    And I close the stdin stream
+    Then the output should contain "1,2,NORTH"
+
+  Scenario: Rotating a robot left from south
+    When I run `robot_simulator` interactively
+    And I type "START"
+    And I type "PLACE 1,2,SOUTH"
+    And I type "LEFT"
+    And I type "REPORT"
+    And I close the stdin stream
+    Then the output should contain "1,2,EAST"

@@ -17,6 +17,7 @@ module ReaTest
         when :place then @simulator.place(command.parameters[:position])
         when :report then puts @simulator.report
         when :move then @simulator.move
+        when :left then @simulator.left
         end
       end
     end

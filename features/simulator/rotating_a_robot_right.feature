@@ -7,7 +7,7 @@ Feature: Rotating a robot right
     When I run `robot_simulator` interactively
     And I type "START"
     And I type "PLACE 1,2,NORTH"
-    And I type "right"
+    And I type "RIGHT"
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "1,2,EAST"
@@ -16,7 +16,7 @@ Feature: Rotating a robot right
     When I run `robot_simulator` interactively
     And I type "START"
     And I type "PLACE 1,2,WEST"
-    And I type "right"
+    And I type "RIGHT"
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "1,2,NORTH"
@@ -25,7 +25,7 @@ Feature: Rotating a robot right
     When I run `robot_simulator` interactively
     And I type "START"
     And I type "PLACE 1,2,EAST"
-    And I type "right"
+    And I type "RIGHT"
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "1,2,SOUTH"
@@ -34,7 +34,7 @@ Feature: Rotating a robot right
     When I run `robot_simulator` interactively
     And I type "START"
     And I type "PLACE 1,2,SOUTH"
-    And I type "right"
+    And I type "RIGHT"
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "1,2,WEST"

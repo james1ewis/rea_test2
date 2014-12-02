@@ -232,7 +232,7 @@ describe ReaTest::Domain::Robot do
 
       robot = ReaTest::Domain::Robot.new table: table
       robot.place(initial_position)
-      robot.left
+      robot.right
 
       expect(robot.position.heading).to eq(:east)
     end
@@ -245,7 +245,7 @@ describe ReaTest::Domain::Robot do
 
       robot = ReaTest::Domain::Robot.new table: table
       robot.place(initial_position)
-      robot.left
+      robot.right
 
       expect(robot.position.heading).to eq(:north)
     end
@@ -258,7 +258,7 @@ describe ReaTest::Domain::Robot do
 
       robot = ReaTest::Domain::Robot.new table: table
       robot.place(initial_position)
-      robot.left
+      robot.right
 
       expect(robot.position.heading).to eq(:west)
     end
@@ -271,7 +271,7 @@ describe ReaTest::Domain::Robot do
 
       robot = ReaTest::Domain::Robot.new table: table
       robot.place(initial_position)
-      robot.left
+      robot.right
 
       expect(robot.position.heading).to eq(:south)
     end

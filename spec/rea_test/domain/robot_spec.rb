@@ -166,4 +166,19 @@ describe ReaTest::Domain::Robot do
 
   end
 
+  describe '#left' do
+
+    it 'rotates the robot left from north' do
+      table = double('Table')
+      initial_position = ReaTest::Domain::Position.new(4, 4, :north)
+
+      robot = ReaTest::Domain::Robot.new table: table
+      robot.place(initial_position)
+      robot.left
+
+      expect(robot.position.heading).to eq(:west)
+    end
+
+  end
+
 end

@@ -17,7 +17,7 @@ describe ReaTest::UserInterface::MainMenu do
                                                       stdin: fake_stdin,
                                                       command_loop: command_loop
 
-      ui_presenter.run
+      ui_presenter.display
     end
 
     it 'reads exit command from the user' do
@@ -32,7 +32,7 @@ describe ReaTest::UserInterface::MainMenu do
                                                       stdin: fake_stdin,
                                                       command_loop: command_loop
 
-      ui_presenter.run
+      ui_presenter.display
     end
 
     it 'starts the command loop' do
@@ -42,13 +42,13 @@ describe ReaTest::UserInterface::MainMenu do
 
       allow(fake_stdout).to receive(:puts).twice
       allow(fake_stdin).to receive(:gets) { "START\n" }
-      expect(command_loop).to receive(:start)
+      expect(command_loop).to receive(:display)
 
       ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
                                                       stdin: fake_stdin,
                                                       command_loop: command_loop
 
-      ui_presenter.run
+      ui_presenter.display
     end
 
   end

@@ -10,7 +10,7 @@ module ReaTest
         @command_executor = args.fetch(:command_executor, CommandExecutor.new)
       end
 
-      def start
+      def display
         user_input = ''
 
         until user_input_exit? user_input

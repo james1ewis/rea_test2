@@ -1,26 +1,28 @@
+require_relative 'placeable'
+require_relative 'moveable'
 require_relative 'table'
 
 module ReaTest
   module Domain
 
     class Robot
+      include(ReaTest::Domain::Placeable)
+      include(ReaTest::Domain::Moveable)
+
       attr_reader :position
 
       def initialize(**args)
         @table = args.fetch(:table, Table.new)
       end
 
-      def place(position)
-        @position = position unless @table.out_of_bounds? position
+      protected
+
+      def out_of_bounds?(position)
+        @table.out_of_bounds? position
       end
 
-      def move
-        case @position.heading
-        when :north then @position = Position.new(@position.x, @position.y + 1, @position.heading)
-        when :south then @position = Position.new(@position.x, @position.y - 1, @position.heading)
-        when :east then @position = Position.new(@position.x + 1, @position.y, @position.heading)
-        when :west then @position = Position.new(@position.x - 1, @position.y, @position.heading)
-        end
+      def position=(position)
+        @position = position
       end
     end
 

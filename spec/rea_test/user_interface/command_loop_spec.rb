@@ -18,7 +18,7 @@ describe ReaTest::UserInterface::CommandLoop do
                                                              stdin: fake_stdin,
                                                              command_executor: command_executor
 
-      command_loop.start
+      command_loop.display
     end
 
   end

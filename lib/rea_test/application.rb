@@ -8,7 +8,7 @@ module ReaTest
     end
 
     def run
-      @ui_presenter.run
+      @ui_presenter.display
     end
   end
 

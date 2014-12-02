@@ -10,12 +10,12 @@ module ReaTest
         @command_loop = args.fetch(:command_loop, CommandLoop.new)
       end
 
-      def run
+      def display
         @stdout.puts 'Enter EXIT to exit at anytime'
         @stdout.puts 'Enter START to start the simulator'
         user_input = @stdin.gets.chomp
 
-        @command_loop.start unless user_input == 'EXIT'
+        @command_loop.display unless user_input == 'EXIT'
       end
     end
 

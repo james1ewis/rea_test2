@@ -17,6 +17,8 @@ module ReaTest
       end
 
       def move
+        return if position.nil?
+
         mover = @mover_factory.create(@position.heading)
         mover.move(self)
       end

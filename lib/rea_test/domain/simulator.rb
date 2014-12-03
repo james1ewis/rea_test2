@@ -9,7 +9,7 @@ module ReaTest
       end
 
       def place(position)
-        @robot.place(position)
+        @robot.position = position
       end
 
       def report

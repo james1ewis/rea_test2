@@ -14,6 +14,8 @@ module ReaTest
         type = tokens[0].downcase.to_sym
         position = get_position_from(tokens[1]) unless tokens.count == 1
 
+
+
         case type
         when :report then @command_factory.create(type, { })
         when 'PLACE' then Command.new type: :place,

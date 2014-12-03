@@ -11,21 +11,16 @@ describe ReaTest::UserInterface::Parser do
 
       parser = ReaTest::UserInterface::Parser.new command_factory: command_factory
       parser.parse('REPORT')
-
     end
 
     it 'parses a place command' do
-      parser = ReaTest::UserInterface::Parser.new
-      command = parser.parse('PLACE 1,2,NORTH')
+      command_factory = double('CommandFactory')
+      parameters = { position: ReaTest::Domain::Position.new(1, 2, :north) }
 
-      expect(command).to be_a(ReaTest::UserInterface::Command)
-      expect(command.type).to eq(:place)
-      expect(command.parameters).to be_a(Hash)
-      expect(command.parameters.count).to eq(1)
-      expect(command.parameters[:position]).to be_a(ReaTest::Domain::Position)
-      expect(command.parameters[:position].x).to eq(1)
-      expect(command.parameters[:position].y).to eq(2)
-      expect(command.parameters[:position].heading).to eq(:north)
+      expect(command_factory).to receive(:create).with(:report, parameters)
+
+      parser = ReaTest::UserInterface::Parser.new command_factory: command_factory
+      parser.parse('PLACE 1,2,NORTH')
     end
 
     it 'parses a move command' do

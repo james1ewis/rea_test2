@@ -2,15 +2,8 @@ module ReaTest
   module Domain
 
     class Mover
-      def initialize(**args)
-        @table = args.fetch(:table, Table.new)
-      end
-
       def move(moveable)
-        current_position = moveable.position
-        new_position = get_next_position_from(current_position)
-
-        moveable.position = new_position unless @table.out_of_bounds? new_position
+        moveable.position = get_next_position_from(moveable.position)
       end
 
       private

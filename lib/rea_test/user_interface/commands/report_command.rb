@@ -1,14 +1,12 @@
-require 'observer'
+require_relative 'command'
 
 module ReaTest
   module UserInterface
     module Commands
 
-      class ReportCommand
-        include Observable
+      class ReportCommand < Command
 
         def initialize(**args)
-          @stdout = args.fetch(:stdout, $stdout)
           @simulator = args.fetch(:simulator)
         end
 

@@ -1,11 +1,10 @@
-require 'observer'
+require_relative 'command'
 
 module ReaTest
   module UserInterface
     module Commands
 
-    class MoveCommand
-      include Observable
+    class MoveCommand < Command
 
       def initialize(**args)
         @simulator = args.fetch(:simulator)

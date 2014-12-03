@@ -1,11 +1,10 @@
-require 'observer'
+require_relative 'command'
 
 module ReaTest
   module UserInterface
     module Commands
 
-      class PlaceCommand
-        include Observable
+      class PlaceCommand < Command
 
         def initialize(**args)
           @simulator = args.fetch(:simulator)

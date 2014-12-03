@@ -7,7 +7,9 @@ module ReaTest
         @position = args.fetch(:position, nil)
       end
 
-
+      def execute
+        @simulator.place(@position)
+      end
     end
 
   end

@@ -13,7 +13,7 @@ module ReaTest
       def initialize(**args)
         @table = args.fetch(:table, Table.new)
         @placer = args.fetch(:placer, Placer.new)
-        @mover = args.fetch(:mover, nil)
+        @mover = args.fetch(:mover, Mover.new)
       end
 
       def place(position)

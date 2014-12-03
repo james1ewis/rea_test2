@@ -4,11 +4,11 @@ module ReaTest
 
   class Application
     def initialize(**args)
-      @ui_presenter = args.fetch(:ui_presenter, UserInterface::MainMenu.new)
+      @main_menu = args.fetch(:main_menu, UserInterface::MainMenu.new)
     end
 
     def run
-      @ui_presenter.run
+      @main_menu.run
     end
   end
 

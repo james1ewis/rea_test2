@@ -9,7 +9,7 @@ describe ReaTest::Application do
 
       expect(main_menu).to receive(:run)
 
-      application = ReaTest::Application.new ui_presenter: main_menu
+      application = ReaTest::Application.new main_menu: main_menu
       application.run
     end
 

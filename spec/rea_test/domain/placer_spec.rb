@@ -8,12 +8,11 @@ describe ReaTest::Domain::Placer do
       table = double('Table')
       robot = double('Robot')
       position = ReaTest::Domain::Position.new(1, 2, :north)
-
       placer = ReaTest::Domain::Placer.new table: table
 
+      expect(robot).to receive(:position=).with(position)
+      
       placer.place(robot, position)
-
-      expect(robot.position).to eq(position)
     end
 
   end

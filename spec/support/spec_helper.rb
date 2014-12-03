@@ -7,5 +7,6 @@ require_relative '../../lib/rea_test/domain/position'
 require_relative '../../lib/rea_test/domain/Robot'
 require_relative '../../lib/rea_test/domain/simulator'
 require_relative '../../lib/rea_test/domain/table'
+require_relative '../../lib/rea_test/domain/placer'
 
 require 'rspec'

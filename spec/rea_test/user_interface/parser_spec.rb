@@ -7,10 +7,11 @@ describe ReaTest::UserInterface::Parser do
     it 'parses a report command' do
       command_factory = double('CommandFactory')
 
-      parser = ReaTest::UserInterface::Parser.new command_factory: command_factory
-      command = parser.parse('REPORT')
+      expect(command_factory).to receive(:create).with(:report, an_instance_of(Hash))
 
-      expect(command_factory).to receive(:create).with(:report, { })
+      parser = ReaTest::UserInterface::Parser.new command_factory: command_factory
+      parser.parse('REPORT')
+
     end
 
     it 'parses a place command' do

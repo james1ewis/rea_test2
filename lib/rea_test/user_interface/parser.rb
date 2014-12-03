@@ -5,14 +5,17 @@ module ReaTest
   module UserInterface
 
     class Parser
-      def parse(text)
+      def initialize(**args)
+        @command_factory = args.fetch(:command_factory, nil)
+      end
 
+      def parse(text)
         tokens = text.split(/\s/)
-        type = tokens[0]
+        type = tokens[0].downcase.to_sym
         position = get_position_from(tokens[1]) unless tokens.count == 1
 
         case type
-        when 'REPORT' then Command.new type: :report
+        when :report then @command_factory.create(type, { })
         when 'PLACE' then Command.new type: :place,
                                       parameters: { position: position }
         when 'MOVE' then Command.new type: :move

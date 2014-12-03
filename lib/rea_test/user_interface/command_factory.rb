@@ -6,8 +6,8 @@ module ReaTest
         @simulator = args.fetch(:simulator, ReaTest::Domain::Simulator.new)
       end
 
-      def create(type, parameters)
-        
+      def create(type, **parameters)
+        PlaceCommand.new position: parameters[:position]
       end
     end
 

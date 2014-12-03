@@ -18,6 +18,14 @@ describe ReaTest::Domain::Robot do
       robot.move
     end
 
+    it 'does not move if not placed' do
+      move_factory = double('MoveFactory')
+
+      robot = ReaTest::Domain::Robot.new mover_factory: move_factory
+
+      robot.move
+    end
+
   end
 
   describe '#left' do

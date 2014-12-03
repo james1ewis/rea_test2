@@ -1,4 +1,6 @@
 require_relative 'mover'
+require_relative 'left_rotater'
+require_relative 'right_rotater'
 require_relative 'rotater'
 require_relative 'placer'
 require_relative 'table'

@@ -32,7 +32,7 @@ module ReaTest
 
           command = @parser.parse(@user_input)
 
-          # could add the menu as an observer to each command, then report wouldn't need stdout...
+          command.add_observer(self)
           command.execute
         end
       end

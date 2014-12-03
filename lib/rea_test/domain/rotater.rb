@@ -6,24 +6,26 @@ module ReaTest
         @headings = [:north, :east, :south, :west]
       end
 
-      def rotate_left(rotateable)
+      def rotate(rotateable)
         current_position = rotateable.position
 
         current_heading = @headings.find_index(current_position.heading)
 
-        current_heading == 0 ? current_heading = 3 : current_heading -= 1
+        next_heading = get_next_heading(current_heading)
 
         rotateable.position = Position.new(current_position.x, current_position.y, @headings[current_heading])
       end
+    end
 
-      def rotate_right(rotateable)
-        current_position = rotateable.position
+    class LeftRotater < Rotater
+      def get_next_heading(current_heading)
+        current_heading == 0 ? current_heading = 3 : current_heading -= 1
+      end
+    end
 
-        current_heading = @headings.find_index(current_position.heading)
-
+    class RightRotater < Rotater
+      def get_next_heading(current_heading)
         current_heading == 3 ? current_heading = 0 : current_heading += 1
-
-        rotateable.position = Position.new(current_position.x, current_position.y, @headings[current_heading])
       end
     end
 

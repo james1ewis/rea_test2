@@ -1,5 +1,3 @@
-require_relative 'command_executor'
-
 module ReaTest
   module UserInterface
 

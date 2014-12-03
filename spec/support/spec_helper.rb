@@ -9,5 +9,6 @@ require_relative '../../lib/rea_test/domain/simulator'
 require_relative '../../lib/rea_test/domain/table'
 require_relative '../../lib/rea_test/domain/placer'
 require_relative '../../lib/rea_test/domain/mover'
+require_relative '../../lib/rea_test/domain/rotater'
 
 require 'rspec'

@@ -39,7 +39,7 @@ describe ReaTest::Domain::Mover do
       robot = double('Robot')
 
       initial_position = ReaTest::Domain::Position.new(0, 0, :east)
-      new_position = ReaTest::Domain::Position.new(0, 1, :east)
+      new_position = ReaTest::Domain::Position.new(1, 0, :east)
 
       expect(robot).to receive(:position) { initial_position }
       expect(table).to receive(:out_of_bounds?).with(new_position) { false }
@@ -53,8 +53,8 @@ describe ReaTest::Domain::Mover do
       table = double('Table')
       robot = double('Robot')
 
-      initial_position = ReaTest::Domain::Position.new(0, 1, :west)
-      new_position = ReaTest::Domain::Position.new(0, 0, :west)
+      initial_position = ReaTest::Domain::Position.new(1, 1, :west)
+      new_position = ReaTest::Domain::Position.new(0, 1, :west)
 
       expect(robot).to receive(:position) { initial_position }
       expect(table).to receive(:out_of_bounds?).with(new_position) { false }

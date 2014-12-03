@@ -45,6 +45,14 @@ describe ReaTest::UserInterface::Parser do
       parser.parse('RIGHT')
     end
 
+    it 'parses a erroneous input' do
+      parser = create_with_expectations do |command_factory|
+        expect(command_factory).to receive(:create).with(:null, an_instance_of(Hash))
+      end
+
+      parser.parse("\n")
+    end
+
   end
 
 end

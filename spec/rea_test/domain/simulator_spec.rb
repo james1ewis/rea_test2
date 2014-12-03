@@ -22,7 +22,7 @@ describe ReaTest::Domain::Simulator do
       position = ReaTest::Domain::Position.new(1, 1, :north)
 
       simulator = create_simulator_with_expectations do |robot|
-        expect(robot).to receive(:position) { position }
+        expect(robot).to receive(:position).twice { position }
       end
 
       expect(simulator.report).to eq(position.to_s)
@@ -32,8 +32,9 @@ describe ReaTest::Domain::Simulator do
     it 'does not report the position of the robot if it is unplaced' do
       robot = double('Robot')
 
+      expect(robot).to receive(:position) { nil }
+
       simulator = ReaTest::Domain::Simulator.new robot: robot
-      
       simulator.report
     end
 

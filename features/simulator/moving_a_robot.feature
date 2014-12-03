@@ -60,4 +60,7 @@ Feature: Moving a robot
       Enter START to start the simulator
       Enter Command:
       Enter Command:
+
+      Enter Command:
+
       """

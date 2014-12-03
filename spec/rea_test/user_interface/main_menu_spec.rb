@@ -38,7 +38,7 @@ describe ReaTest::UserInterface::MainMenu do
       allow(@stdout).to receive(:puts).with('Enter START to start the simulator')
       allow(@stdin).to receive(:gets).and_return("START\n", "EXIT\n")
 
-      expect(@stdout).to receive(:puts).with('Enter Command: ')
+      expect(@stdout).to receive(:puts).with('Enter Command:')
 
       main_menu = ReaTest::UserInterface::MainMenu.new stdout: @stdout,
                                                        stdin: @stdin,
@@ -53,7 +53,7 @@ describe ReaTest::UserInterface::MainMenu do
       allow(@stdout).to receive(:puts).with('Enter EXIT to exit at anytime')
       allow(@stdout).to receive(:puts).with('Enter START to start the simulator')
       allow(@stdin).to receive(:gets).and_return("START\n", "MOVE\n", "EXIT\n")
-      allow(@stdout).to receive(:puts).at_least(1).times.with('Enter Command: ')
+      allow(@stdout).to receive(:puts).at_least(1).times.with('Enter Command:')
       allow(move_command).to receive(:add_observer)
 
       expect(@parser).to receive(:parse).with('MOVE') { move_command }
@@ -72,7 +72,7 @@ describe ReaTest::UserInterface::MainMenu do
       allow(@stdout).to receive(:puts).with('Enter EXIT to exit at anytime')
       allow(@stdout).to receive(:puts).with('Enter START to start the simulator')
       allow(@stdin).to receive(:gets).and_return("START\n", "MOVE\n", "EXIT\n")
-      allow(@stdout).to receive(:puts).at_least(1).times.with('Enter Command: ')
+      allow(@stdout).to receive(:puts).at_least(1).times.with('Enter Command:')
 
       expect(@parser).to receive(:parse).with('MOVE') { move_command }
       expect(move_command).to receive(:execute)

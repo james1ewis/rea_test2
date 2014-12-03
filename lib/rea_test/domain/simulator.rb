@@ -13,6 +13,8 @@ module ReaTest
       end
 
       def report
+        return if @robot.position.nil?
+
         @robot.position.to_s
       end
 

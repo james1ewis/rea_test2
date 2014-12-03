@@ -29,7 +29,7 @@ module ReaTest
 
       def display_command_loop
         until exit?
-          output 'Enter Command: '
+          output 'Enter Command:'
           read_input
 
           break if exit?

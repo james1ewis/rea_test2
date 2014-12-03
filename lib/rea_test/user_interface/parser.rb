@@ -15,13 +15,7 @@ module ReaTest
         position = get_position_from(tokens[1]) unless tokens.count == 1
         parameters = position.nil? ? { } : { position: position }
 
-        case type
-        when :report then @command_factory.create(type, parameters)
-        when :place then @command_factory.create(type, parameters)
-        when 'MOVE' then Command.new type: :move
-        when 'LEFT' then Command.new type: :left
-        when 'RIGHT' then Command.new type: :right
-        end
+        @command_factory.create(type, parameters)
       end
 
       private

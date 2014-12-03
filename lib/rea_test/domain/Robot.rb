@@ -1,4 +1,3 @@
-require_relative 'mover'
 require_relative 'left_rotater'
 require_relative 'right_rotater'
 require_relative 'table'
@@ -11,13 +10,14 @@ module ReaTest
 
       def initialize(**args)
         @table = args.fetch(:table, Table.new)
-        @mover = args.fetch(:mover, Mover.new)
+        @move_factory = args.fetch(:move_factory, MoveFactory.new)
         @left_rotater = args.fetch(:left_rotater, LeftRotater.new)
         @right_rotater = args.fetch(:right_rotater, RightRotater.new)
       end
 
       def move
-        @mover.move(self)
+        mover = @move_factory.create(position.heading)
+        mover.move(self)
       end
 
       def left

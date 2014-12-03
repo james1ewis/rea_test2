@@ -14,15 +14,15 @@ module ReaTest
           @simulator = args.fetch(:simulator, ReaTest::Domain::Simulator.new)
 
           # could just load these dynamically....
-          @commandMappings = { place: PlaceCommand,
-                               report: ReportCommand,
-                               move: MoveCommand,
-                               left: LeftCommand,
-                               right: RightCommand }
+          @command_mappings = { place: PlaceCommand,
+                                report: ReportCommand,
+                                move: MoveCommand,
+                                left: LeftCommand,
+                                right: RightCommand }
         end
 
         def create(type, **parameters)
-          @commandMappings[type].new simulator: @simulator, parameters: parameters
+          @command_mappings[type].new simulator: @simulator, parameters: parameters
         end
       end
 

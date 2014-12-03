@@ -1,4 +1,3 @@
-require_relative 'placeable'
 require_relative 'moveable'
 require_relative 'table'
 
@@ -6,7 +5,6 @@ module ReaTest
   module Domain
 
     class Robot
-      include(ReaTest::Domain::Placeable)
       include(ReaTest::Domain::Moveable)
 
       attr_reader :position

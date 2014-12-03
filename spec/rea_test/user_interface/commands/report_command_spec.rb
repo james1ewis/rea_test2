@@ -1,6 +1,6 @@
 require_relative '../../../support/spec_helper'
 
-describe ReaTest::UserInterface::ReportCommand do
+describe ReaTest::UserInterface::Commands::ReportCommand do
 
   describe '#execute' do
 
@@ -9,7 +9,7 @@ describe ReaTest::UserInterface::ReportCommand do
 
       expect(simulator).to receive(:report)
 
-      report = ReaTest::UserInterface::ReportCommand.new simulator: simulator
+      report = ReaTest::UserInterface::Commands::ReportCommand.new simulator: simulator
       report.execute
     end
 
@@ -21,7 +21,7 @@ describe ReaTest::UserInterface::ReportCommand do
       expect(simulator).to receive(:report) { position }
       expect(stdout).to receive(:puts).with(position)
 
-      report = ReaTest::UserInterface::ReportCommand.new simulator: simulator, stdout: stdout
+      report = ReaTest::UserInterface::Commands::ReportCommand.new simulator: simulator, stdout: stdout
       report.execute
     end
 

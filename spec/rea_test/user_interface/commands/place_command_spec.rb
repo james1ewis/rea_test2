@@ -1,6 +1,6 @@
 require_relative '../../../support/spec_helper'
 
-describe ReaTest::UserInterface::PlaceCommand do
+describe ReaTest::UserInterface::Commands::PlaceCommand do
 
   describe '#execute' do
 
@@ -10,7 +10,7 @@ describe ReaTest::UserInterface::PlaceCommand do
 
       expect(simulator).to receive(:place).with(position)
 
-      place = ReaTest::UserInterface::PlaceCommand.new simulator: simulator, position: position
+      place = ReaTest::UserInterface::Commands::PlaceCommand.new simulator: simulator, position: position
       place.execute
     end
 

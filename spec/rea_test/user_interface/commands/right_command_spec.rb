@@ -1,6 +1,6 @@
 require_relative '../../../support/spec_helper'
 
-describe ReaTest::UserInterface::RightCommand do
+describe ReaTest::UserInterface::Commands::RightCommand do
 
   describe '#execute' do
 
@@ -9,7 +9,7 @@ describe ReaTest::UserInterface::RightCommand do
 
       expect(simulator).to receive(:right)
 
-      right = ReaTest::UserInterface::RightCommand.new simulator: simulator
+      right = ReaTest::UserInterface::Commands::RightCommand.new simulator: simulator
       right.execute
     end
 

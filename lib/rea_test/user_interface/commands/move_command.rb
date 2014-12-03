@@ -1,5 +1,6 @@
 module ReaTest
   module UserInterface
+    module Commands
 
     class MoveCommand
       def initialize(**args)
@@ -11,5 +12,6 @@ module ReaTest
       end
     end
 
+    end
   end
 end

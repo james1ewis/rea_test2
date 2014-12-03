@@ -1,6 +1,6 @@
 require_relative '../../../support/spec_helper'
 
-describe ReaTest::UserInterface::MoveCommand do
+describe ReaTest::UserInterface::Commands::MoveCommand do
 
   describe '#execute' do
 
@@ -9,7 +9,7 @@ describe ReaTest::UserInterface::MoveCommand do
 
       expect(simulator).to receive(:move)
 
-      move = ReaTest::UserInterface::MoveCommand.new simulator: simulator
+      move = ReaTest::UserInterface::Commands::MoveCommand.new simulator: simulator
       move.execute
     end
 

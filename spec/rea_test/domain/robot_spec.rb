@@ -19,6 +19,16 @@ describe ReaTest::Domain::Robot do
 
   describe '#move' do
 
+    it 'moves itself' do
+      mover = double('Mover')
+
+      robot = ReaTest::Domain::Robot.new mover: mover
+
+      expect(mover).to receive(:move).with(robot)
+
+      robot.move
+    end
+
     context 'the new position is within the table bounds' do
 
       it 'increments robots position heading north' do

@@ -17,7 +17,15 @@ module ReaTest
 
       protected
 
-      # there is obviously a problem here...
+      # there is obviously a problem here... robot probably shouldn't know about a table - it
+      # is just responsible for robot things...
+
+      # this is what we want:
+        # mover.move(self)
+        # rotater.rotate_right(self)
+        # rotater.rotate_left(self)
+        # placer.place(self)
+
       def out_of_bounds?(position)
         @table.out_of_bounds? position
       end

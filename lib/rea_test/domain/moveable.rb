@@ -9,8 +9,6 @@ module ReaTest
         self.position = new_position unless out_of_bounds? new_position
       end
 
-
-      # it looks like the left and right belong in a class?  Or perhaps rotate should be the only method here...
       def left
         self.position = rotate do |current_heading|
           current_heading == 0 ? current_heading = 3 : current_heading -= 1

@@ -4,6 +4,18 @@ describe ReaTest::Domain::Robot do
 
   describe '#place' do
 
+    it 'places itself' do
+      placer = double('Placer')
+      position = ReaTest::Domain::Position.new(1, 2, :north)
+
+      expect(placer).to receive(:place).with(position)
+
+      robot = Robot.new placer: placer
+      robot.place(position)
+
+      expect(robot.position).to eq(position)
+    end
+
     context 'the position is within the table bounds' do
 
       it 'update the robots current position' do

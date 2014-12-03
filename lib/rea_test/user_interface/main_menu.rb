@@ -1,3 +1,5 @@
+require_relative 'parser'
+
 module ReaTest
   module UserInterface
 

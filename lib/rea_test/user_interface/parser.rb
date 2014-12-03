@@ -1,4 +1,4 @@
-require_relative '../user_interface/command'
+require_relative '../user_interface/command_factory'
 require_relative '../domain/position'
 
 module ReaTest

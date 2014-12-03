@@ -7,7 +7,7 @@ module ReaTest
   module Domain
     module Movers
 
-      class MoveFactory
+      class MoverFactory
         def initialize
           # could loads these dynamically...
           @mover_mappings = { north: NorthMover,

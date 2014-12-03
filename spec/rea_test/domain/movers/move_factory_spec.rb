@@ -1,11 +1,11 @@
 require_relative '../../../support/spec_helper'
 
-describe ReaTest::Domain::Movers::MoveFactory do
+describe ReaTest::Domain::Movers::MoverFactory do
 
   describe '#create' do
 
     before :each do
-      @factory = ReaTest::Domain::Movers::MoveFactory.new
+      @factory = ReaTest::Domain::Movers::MoverFactory.new
     end
 
     it 'creates a north_mover' do

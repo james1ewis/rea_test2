@@ -8,11 +8,11 @@ module ReaTest
 
         def initialize(**args)
           @simulator = args.fetch(:simulator)
-          @position = args.fetch(:position)
+          @parameters = args.fetch(:parameters)
         end
 
         def execute
-          @simulator.place(@position)
+          @simulator.place(@parameters[:position])
         end
       end
 

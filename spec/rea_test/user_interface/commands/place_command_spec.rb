@@ -10,7 +10,7 @@ describe ReaTest::UserInterface::Commands::PlaceCommand do
 
       expect(simulator).to receive(:place).with(position)
 
-      place = ReaTest::UserInterface::Commands::PlaceCommand.new simulator: simulator, position: position
+      place = ReaTest::UserInterface::Commands::PlaceCommand.new simulator: simulator, parameters: { position: position }
       place.execute
     end
 

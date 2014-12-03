@@ -70,58 +70,58 @@ describe ReaTest::Domain::Mover do
 
     it 'does not increment robots position heading west' do
       table = double('Table')
+      robot = double('Robot')
+
       initial_position = ReaTest::Domain::Position.new(0, 0, :west)
       new_position = ReaTest::Domain::Position.new(-1, 0, :west)
 
+      expect(robot).to receive(:position) { initial_position }
       expect(table).to receive(:out_of_bounds?).with(new_position) { true }
 
-      robot = ReaTest::Domain::Robot.new table: table
-      robot.place(initial_position)
-      robot.move
-
-      expect(robot.position.x).to eq(0)
+      mover = ReaTest::Domain::Mover.new table: table
+      mover.move(robot)
     end
 
     it 'does not increment robots position heading east' do
       table = double('Table')
+      robot = double('Robot')
+
       initial_position = ReaTest::Domain::Position.new(4, 0, :east)
       new_position = ReaTest::Domain::Position.new(5, 0, :east)
 
+      expect(robot).to receive(:position) { initial_position }
       expect(table).to receive(:out_of_bounds?).with(new_position) { true }
 
-      robot = ReaTest::Domain::Robot.new table: table
-      robot.place(initial_position)
-      robot.move
-
-      expect(robot.position.x).to eq(4)
+      mover = ReaTest::Domain::Mover.new table: table
+      mover.move(robot)
     end
 
     it 'does not increment robots position heading south' do
       table = double('Table')
+      robot = double('Robot')
+
       initial_position = ReaTest::Domain::Position.new(0, 0, :south)
       new_position = ReaTest::Domain::Position.new(0, -1, :south)
 
+      expect(robot).to receive(:position) { initial_position }
       expect(table).to receive(:out_of_bounds?).with(new_position) { true }
 
-      robot = ReaTest::Domain::Robot.new table: table
-      robot.place(initial_position)
-      robot.move
-
-      expect(robot.position.y).to eq(0)
+      mover = ReaTest::Domain::Mover.new table: table
+      mover.move(robot)
     end
 
     it 'does not increment robots position heading north' do
       table = double('Table')
+      robot = double('Robot')
+
       initial_position = ReaTest::Domain::Position.new(4, 4, :north)
       new_position = ReaTest::Domain::Position.new(4, 5, :north)
 
+      expect(robot).to receive(:position) { initial_position }
       expect(table).to receive(:out_of_bounds?).with(new_position) { true }
 
-      robot = ReaTest::Domain::Robot.new table: table
-      robot.place(initial_position)
-      robot.move
-
-      expect(robot.position.y).to eq(4)
+      mover = ReaTest::Domain::Mover.new table: table
+      mover.move(robot)
     end
 
   end

@@ -8,9 +8,7 @@ describe ReaTest::UserInterface::Parser do
       parser = ReaTest::UserInterface::Parser.new
       command = parser.parse('REPORT')
 
-      expect(command).to be_a(ReaTest::UserInterface::Command)
-      expect(command.type).to eq(:report)
-      expect(command.parameters).to be_nil
+      expect(command).to be_a(ReaTest::UserInterface::ReportCommand)
     end
 
     it 'parses a place command' do

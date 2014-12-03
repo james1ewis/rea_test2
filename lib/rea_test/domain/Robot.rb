@@ -1,7 +1,6 @@
 require_relative 'mover'
 require_relative 'left_rotater'
 require_relative 'right_rotater'
-require_relative 'placer'
 require_relative 'table'
 
 module ReaTest
@@ -12,14 +11,9 @@ module ReaTest
 
       def initialize(**args)
         @table = args.fetch(:table, Table.new)
-        @placer = args.fetch(:placer, Placer.new)
         @mover = args.fetch(:mover, Mover.new)
         @left_rotater = args.fetch(:left_rotater, LeftRotater.new)
         @right_rotater = args.fetch(:right_rotater, RightRotater.new)
-      end
-
-      def place(position)
-        @placer.place(self, position)
       end
 
       def move

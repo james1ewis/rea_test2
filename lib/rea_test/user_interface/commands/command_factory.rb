@@ -18,7 +18,8 @@ module ReaTest
                                 report: ReportCommand,
                                 move: MoveCommand,
                                 left: LeftCommand,
-                                right: RightCommand }
+                                right: RightCommand,
+                                null: NullCommand }
         end
 
         def create(type, **parameters)

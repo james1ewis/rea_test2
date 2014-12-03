@@ -34,6 +34,11 @@ describe ReaTest::UserInterface::Commands::CommandFactory do
       expect(command).to be_a(ReaTest::UserInterface::Commands::RightCommand)
     end
 
+    it 'creates a null command' do
+      command = @command_factory.create(:null)
+      expect(command).to be_a(ReaTest::UserInterface::Commands::NullCommand)
+    end
+
   end
 
 end

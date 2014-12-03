@@ -5,7 +5,7 @@ module MoverHelper
     expect(robot).to receive(:position) { args[:from] }
     expect(robot).to receive(:position=).with(args[:to])
 
-    mover = ReaTest::Domain::Mover.new
+    mover = args[:mover].new
     mover.move(robot)
   end
 end

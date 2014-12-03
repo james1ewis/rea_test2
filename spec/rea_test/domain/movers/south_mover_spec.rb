@@ -5,16 +5,9 @@ describe ReaTest::Domain::SouthMover do
   describe '#move' do
 
     it 'moves the robot south 1 position' do
-      mover = ReaTest::Domain::SouthMover.new
-      position = ReaTest::Domain::Position.new(1, 2, :south)
-      expected_position = ReaTest::Domain::Position.new(1, 1, :south)
-
-      robot = ReaTest::Domain::Robot.new
-      robot.position = position
-
-      mover.move(robot)
-
-      expect(robot.position).to eq(expected_position)
+      it_moves_robot mover: ReaTest::Domain::SouthMover,
+                     from: ReaTest::Domain::Position.new(1, 2, :south),
+                     to: ReaTest::Domain::Position.new(1, 1, :south)
     end
 
   end

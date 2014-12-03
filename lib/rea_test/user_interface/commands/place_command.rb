@@ -4,7 +4,7 @@ module ReaTest
     class PlaceCommand
       def initialize(**args)
         @simulator = args.fetch(:simulator)
-        @position = args.fetch(:position, nil)
+        @position = args.fetch(:position)
       end
 
       def execute

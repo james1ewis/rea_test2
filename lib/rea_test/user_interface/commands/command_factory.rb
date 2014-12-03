@@ -1,4 +1,4 @@
-require_relative '../domain/simulator'
+require_relative '../../domain/simulator'
 require_relative 'place_command'
 require_relative 'report_command'
 require_relative 'move_command'

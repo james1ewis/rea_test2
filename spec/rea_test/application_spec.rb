@@ -5,22 +5,11 @@ describe ReaTest::Application do
   describe '#run' do
 
     it 'instantiates the main menu' do
-      ui_presenter = double('UIPresenter')
+      main_menu = double('MainMenu')
 
-      expect(ui_presenter).to receive(:run)
+      expect(main_menu).to receive(:run)
 
-      application = ReaTest::Application.new ui_presenter: ui_presenter
-      application.run
-    end
-
-    it 'adds the main menu as a listener to the observable simulator' do
-      ui_presenter = double('UIPresenter')
-      simulator = double('ObservableSimulator')
-
-      expect(ui_presenter).to receive(:run)
-      expect(simulator).to receive(:add_listener).with(ui_presenter)
-
-      application = ReaTest::Application.new ui_presenter: ui_presenter
+      application = ReaTest::Application.new ui_presenter: main_menu
       application.run
     end
 

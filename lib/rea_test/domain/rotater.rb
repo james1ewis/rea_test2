@@ -7,25 +7,23 @@ module ReaTest
       end
 
       def rotate_left(rotateable)
-        rotateable.position = rotate do |current_heading|
-          current_heading == 0 ? current_heading = 3 : current_heading -= 1
-        end
+        current_position = rotateable.position
+
+        current_heading = @headings.find_index(current_position.heading)
+
+        current_heading == 0 ? current_heading = 3 : current_heading -= 1
+
+        rotateable.position = Position.new(current_position.x, current_position.y, @headings[current_heading])
       end
 
       def rotate_right(rotateable)
-        rotateable.position = rotate do |current_heading|
-          current_heading == 3 ? current_heading = 0 : current_heading += 1
-        end
-      end
+        current_position = rotateable.position
 
-      private
+        current_heading = @headings.find_index(current_position.heading)
 
-      def rotate(&strategy)
-        current_heading = @headings.find_index(self.position.heading)
+        current_heading == 3 ? current_heading = 0 : current_heading += 1
 
-        current_heading = strategy.call(current_heading)
-
-        Position.new(self.position.x, self.position.y, @headings[current_heading])
+        rotateable.position = Position.new(current_position.x, current_position.y, @headings[current_heading])
       end
     end
 

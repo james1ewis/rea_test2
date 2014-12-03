@@ -7,7 +7,7 @@ describe ReaTest::UserInterface::MainMenu do
     it 'displays options to the user' do
       fake_stdout = double('$stdout')
       fake_stdin = double('$stdin')
-      command_executor = double('CommandExecutor')
+      parser = double('Parser')
 
       expect(fake_stdout).to receive(:puts).with('Enter EXIT to exit at anytime')
       expect(fake_stdout).to receive(:puts).with('Enter START to start the simulator')
@@ -15,7 +15,7 @@ describe ReaTest::UserInterface::MainMenu do
 
       ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
                                                       stdin: fake_stdin,
-                                                      command_executor: command_executor
+                                                      parser: parser
 
       ui_presenter.run
     end
@@ -23,14 +23,14 @@ describe ReaTest::UserInterface::MainMenu do
     it 'reads exit command from the user' do
       fake_stdout = double('$stdout')
       fake_stdin = double('$stdin')
-      command_executor = double('CommandExecutor')
+      parser = double('Parser')
 
       allow(fake_stdout).to receive(:puts)
       expect(fake_stdin).to receive(:gets) { "EXIT\n" }
 
       ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
                                                       stdin: fake_stdin,
-                                                      command_executor: command_executor
+                                                      parser: parser
 
       ui_presenter.run
     end
@@ -38,7 +38,7 @@ describe ReaTest::UserInterface::MainMenu do
     it 'starts the command loop' do
       fake_stdout = double('$stdout')
       fake_stdin = double('$stdin')
-      command_executor = double('CommandExecutor')
+      parser = double('Parser')
 
       allow(fake_stdout).to receive(:puts).with('Enter EXIT to exit at anytime')
       allow(fake_stdout).to receive(:puts).with('Enter START to start the simulator')
@@ -48,7 +48,7 @@ describe ReaTest::UserInterface::MainMenu do
 
       ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
                                                       stdin: fake_stdin,
-                                                      command_executor: command_executor
+                                                      parser: parser
 
       ui_presenter.run
     end
@@ -56,18 +56,20 @@ describe ReaTest::UserInterface::MainMenu do
     it 'executes commands' do
       fake_stdout = double('$stdout')
       fake_stdin = double('$stdin')
-      command_executor = double('CommandExecutor')
+      parser = double('Parser')
+      move_command = double('MoveCommand')
 
       allow(fake_stdout).to receive(:puts).with('Enter EXIT to exit at anytime')
       allow(fake_stdout).to receive(:puts).with('Enter START to start the simulator')
       allow(fake_stdin).to receive(:gets).and_return("START\n", "MOVE\n", "EXIT\n")
       allow(fake_stdout).to receive(:puts).at_least(1).times.with('Enter Command: ')
 
-      expect(command_executor).to receive(:execute).with('MOVE')
+      expect(parser).to receive(:parser).with('MOVE') { move_command }
+      expect(move_command).to receive(:execute)
 
       ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
                                                           stdin: fake_stdin,
-                                                          command_executor: command_executor
+                                                          parser: parser
 
       ui_presenter.run
     end

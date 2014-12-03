@@ -13,7 +13,8 @@ module ReaTest
         @table = args.fetch(:table, Table.new)
         @placer = args.fetch(:placer, Placer.new)
         @mover = args.fetch(:mover, Mover.new)
-        @rotater = args.fetch(:rotater, Rotater.new)
+        @left_rotater = args.fetch(:left_rotater, LeftRotater.new)
+        @right_rotater = args.fetch(:right_rotater, RightRotater.new)
       end
 
       def place(position)
@@ -25,11 +26,11 @@ module ReaTest
       end
 
       def left
-        @rotater.rotate_left(self)
+        @left_rotater.rotate(self)
       end
 
       def right
-        @rotater.rotate_right(self)
+        @right_rotater.rotate(self)
       end
 
       def position=(position)

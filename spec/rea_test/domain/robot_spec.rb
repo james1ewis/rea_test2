@@ -34,11 +34,11 @@ describe ReaTest::Domain::Robot do
   describe '#left' do
 
     it 'rotates itself left' do
-      rotater = double('Rotater')
+      rotater = double('LeftRotater')
 
-      robot = ReaTest::Domain::Robot.new rotater: rotater
+      robot = ReaTest::Domain::Robot.new left_rotater: rotater
 
-      expect(rotater).to receive(:rotate_left).with(robot)
+      expect(rotater).to receive(:rotate).with(robot)
 
       robot.left
     end
@@ -48,11 +48,11 @@ describe ReaTest::Domain::Robot do
   describe '#right' do
 
     it 'rotates itself right' do
-      rotater = double('Rotater')
+      rotater = double('RightRotater')
 
-      robot = ReaTest::Domain::Robot.new rotater: rotater
+      robot = ReaTest::Domain::Robot.new right_rotater: rotater
 
-      expect(rotater).to receive(:rotate_right).with(robot)
+      expect(rotater).to receive(:rotate).with(robot)
 
       robot.right
     end

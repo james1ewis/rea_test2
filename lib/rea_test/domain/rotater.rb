@@ -13,7 +13,7 @@ module ReaTest
 
         next_heading = get_next_heading(current_heading)
 
-        rotateable.position = Position.new(current_position.x, current_position.y, @headings[current_heading])
+        rotateable.position = Position.new(current_position.x, current_position.y, @headings[next_heading])
       end
     end
 

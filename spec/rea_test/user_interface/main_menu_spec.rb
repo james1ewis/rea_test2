@@ -74,6 +74,29 @@ describe ReaTest::UserInterface::MainMenu do
       ui_presenter.run
     end
 
+    it 'adds itself as an observer to each command' do
+      fake_stdout = double('$stdout')
+      fake_stdin = double('$stdin')
+      parser = double('Parser')
+      move_command = double('MoveCommand')
+
+      allow(fake_stdout).to receive(:puts).with('Enter EXIT to exit at anytime')
+      allow(fake_stdout).to receive(:puts).with('Enter START to start the simulator')
+      allow(fake_stdin).to receive(:gets).and_return("START\n", "MOVE\n", "EXIT\n")
+      allow(fake_stdout).to receive(:puts).at_least(1).times.with('Enter Command: ')
+
+      expect(parser).to receive(:parse).with('MOVE') { move_command }
+      expect(move_command).to receive(:execute)
+
+      ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
+                                                          stdin: fake_stdin,
+                                                          parser: parser
+
+      expect(move_command).to receive(:add_observer).with(ui_presenter)
+      
+      ui_presenter.run
+    end
+
   end
 
 end

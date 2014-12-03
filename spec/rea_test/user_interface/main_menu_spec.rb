@@ -111,7 +111,7 @@ describe ReaTest::UserInterface::MainMenu do
 
       ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,
                                                           stdin: fake_stdin
-      
+
       ui_presenter.update(fake_output)
     end
 

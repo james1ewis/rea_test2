@@ -15,6 +15,10 @@ module ReaTest
         display_command_loop
       end
 
+      def update(text)
+        output text
+      end
+
       private
 
       def display_main_menu

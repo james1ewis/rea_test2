@@ -7,7 +7,13 @@ module ReaTest
       end
 
       def create(type, **parameters)
-        PlaceCommand.new position: parameters[:position]
+        case type
+        when :place then PlaceCommand.new position: parameters[:position]
+        when :report then ReportCommand.new
+        when :move then MoveCommand.new
+        when :left then LeftCommand.new
+        when :right then RightCommand.new
+        end
       end
     end
 

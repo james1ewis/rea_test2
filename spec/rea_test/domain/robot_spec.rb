@@ -66,7 +66,7 @@ describe ReaTest::Domain::Robot do
       robot = ReaTest::Domain::Robot.new table: table
       position = ReaTest::Domain::Position.new(-1, -2, :north)
 
-      expect(table).to receive(:out_of_bounds?).with(position) { false }
+      expect(table).to receive(:out_of_bounds?).with(position) { true }
 
       robot.position = position
 

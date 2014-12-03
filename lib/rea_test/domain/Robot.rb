@@ -35,7 +35,7 @@ module ReaTest
       end
 
       def position=(position)
-        @position = position
+        @position = position unless @table.out_of_bounds? position
       end
     end
 

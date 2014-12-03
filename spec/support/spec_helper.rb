@@ -16,6 +16,7 @@ require_relative '../../lib/rea_test/domain/rotater'
 require_relative 'parser_helper'
 require_relative 'command_helper'
 require_relative 'simulator_helper'
+require_relative 'rotater_helper'
 
 require 'rspec'
 
@@ -23,4 +24,5 @@ RSpec.configure do |config|
   config.include ParserHelper
   config.include CommandHelper
   config.include SimulatorHelper
+  config.include RotaterHelper
 end

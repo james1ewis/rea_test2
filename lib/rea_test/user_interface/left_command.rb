@@ -5,7 +5,7 @@ module ReaTest
       def initialize(**args)
         @simulator = args.fetch(:simulator)
       end
-      
+
 
     end
 

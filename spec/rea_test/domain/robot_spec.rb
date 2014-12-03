@@ -9,7 +9,7 @@ describe ReaTest::Domain::Robot do
       north_mover = double('NorthMover')
       position = ReaTest::Domain::Position.new(1, 2, :north)
 
-      robot = ReaTest::Domain::Robot.new move_factory: move_factory
+      robot = ReaTest::Domain::Robot.new mover_factory: move_factory
 
       expect(move_factory).to receive(:create).with(:north) { north_mover }
       expect(north_mover).to receive(:move).with(robot)

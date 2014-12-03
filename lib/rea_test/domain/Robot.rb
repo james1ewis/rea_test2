@@ -1,6 +1,6 @@
 require_relative 'left_rotater'
 require_relative 'right_rotater'
-require_relative 'move_factory'
+require_relative 'movers/move_factory'
 require_relative 'table'
 
 module ReaTest

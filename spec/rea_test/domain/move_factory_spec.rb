@@ -8,28 +8,28 @@ describe ReaTest::Domain::MoveFactory do
       factory = ReaTest::Domain::MoveFactory.new
       mover = factory.create(:north)
 
-      expect(mover).to be_a(NorthMover)
+      expect(mover).to be_a(ReaTest::Domain::NorthMover)
     end
 
     it 'creates a south_mover' do
       factory = ReaTest::Domain::MoveFactory.new
-      mover = factory.create(:north)
+      mover = factory.create(:south)
 
-      expect(mover).to be_a(SouthMover)
+      expect(mover).to be_a(ReaTest::Domain::SouthMover)
     end
 
     it 'creates a east_mover' do
       factory = ReaTest::Domain::MoveFactory.new
-      mover = factory.create(:north)
+      mover = factory.create(:east)
 
-      expect(mover).to be_a(EastMover)
+      expect(mover).to be_a(ReaTest::Domain::EastMover)
     end
 
     it 'creates a west_mover' do
       factory = ReaTest::Domain::MoveFactory.new
-      mover = factory.create(:north)
+      mover = factory.create(:west)
 
-      expect(mover).to be_a(WestMover)
+      expect(mover).to be_a(ReaTest::Domain::WestMover)
     end
 
   end

@@ -6,7 +6,7 @@ module ReaTest
 
     class Parser
       def initialize(**args)
-        @command_factory = args.fetch(:command_factory, nil)
+        @command_factory = args.fetch(:command_factory, CommandFactory.new)
       end
 
       def parse(text)

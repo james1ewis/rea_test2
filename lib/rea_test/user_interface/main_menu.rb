@@ -7,7 +7,7 @@ module ReaTest
       def initialize(**args)
         @stdout = args.fetch(:stdout, $stdout)
         @stdin = args.fetch(:stdin, $stdin)
-        @command_executor = args.fetch(:command_executor, CommandExecutor.new)
+        @parser = args.fetch(:parser, Parser.new)
       end
 
       def run
@@ -30,7 +30,8 @@ module ReaTest
 
           break if exit?
 
-          @command_executor.execute(@user_input)
+          command = @parser.parse(@user_input)
+          command.execute
         end
       end
 

@@ -64,7 +64,7 @@ describe ReaTest::UserInterface::MainMenu do
       allow(fake_stdin).to receive(:gets).and_return("START\n", "MOVE\n", "EXIT\n")
       allow(fake_stdout).to receive(:puts).at_least(1).times.with('Enter Command: ')
 
-      expect(parser).to receive(:parser).with('MOVE') { move_command }
+      expect(parser).to receive(:parse).with('MOVE') { move_command }
       expect(move_command).to receive(:execute)
 
       ui_presenter = ReaTest::UserInterface::MainMenu.new stdout: fake_stdout,

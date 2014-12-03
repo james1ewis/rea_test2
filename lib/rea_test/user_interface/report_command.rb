@@ -3,11 +3,12 @@ module ReaTest
 
     class ReportCommand
       def initialize(**args)
+        @stdout = args.fetch(:stdout, $stdout)
         @simulator = args.fetch(:simulator)
       end
 
       def execute
-        @simulator.report
+        @stdout.puts @simulator.report
       end
     end
 

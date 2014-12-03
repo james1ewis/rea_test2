@@ -13,18 +13,6 @@ describe ReaTest::UserInterface::Commands::ReportCommand do
       report.execute
     end
 
-    it 'puts the result' do
-      simulator = double('Simulator')
-      stdout = double('$stdout')
-      position = '1,2,NORTH'
-
-      expect(simulator).to receive(:report) { position }
-      expect(stdout).to receive(:puts).with(position)
-
-      report = ReaTest::UserInterface::Commands::ReportCommand.new simulator: simulator, stdout: stdout
-      report.execute
-    end
-
   end
 
 end

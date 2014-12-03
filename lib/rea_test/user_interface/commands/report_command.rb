@@ -13,7 +13,8 @@ module ReaTest
         end
 
         def execute
-          @stdout.puts @simulator.report
+          changed
+          notify_observers(@simulator.report)
         end
       end
 

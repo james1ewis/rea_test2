@@ -5,55 +5,23 @@ describe ReaTest::Domain::Mover do
  describe '#move' do
 
     it 'increments robots position heading north' do
-      robot = double('Robot')
-
-      initial_position = ReaTest::Domain::Position.new(0, 0, :north)
-      new_position = ReaTest::Domain::Position.new(0, 1, :north)
-
-      expect(robot).to receive(:position) { initial_position }
-      expect(robot).to receive(:position=).with(new_position)
-
-      mover = ReaTest::Domain::Mover.new
-      mover.move(robot)
+      it_moves_robot from: ReaTest::Domain::Position.new(0, 0, :north),
+                     to: ReaTest::Domain::Position.new(0, 1, :north)
     end
 
     it 'increments robots position heading south' do
-      robot = double('Robot')
-
-      initial_position = ReaTest::Domain::Position.new(0, 1, :south)
-      new_position = ReaTest::Domain::Position.new(0, 0, :south)
-
-      expect(robot).to receive(:position) { initial_position }
-      expect(robot).to receive(:position=).with(new_position)
-
-      mover = ReaTest::Domain::Mover.new
-      mover.move(robot)
+      it_moves_robot from: ReaTest::Domain::Position.new(0, 1, :south),
+                     to: ReaTest::Domain::Position.new(0, 0, :south)
     end
 
     it 'increments robots position heading east' do
-      robot = double('Robot')
-
-      initial_position = ReaTest::Domain::Position.new(0, 0, :east)
-      new_position = ReaTest::Domain::Position.new(1, 0, :east)
-
-      expect(robot).to receive(:position) { initial_position }
-      expect(robot).to receive(:position=).with(new_position)
-
-      mover = ReaTest::Domain::Mover.new
-      mover.move(robot)
+      it_moves_robot from: ReaTest::Domain::Position.new(0, 0, :east),
+                     to: ReaTest::Domain::Position.new(1, 0, :east)
     end
 
     it 'increments robots position heading west' do
-      robot = double('Robot')
-
-      initial_position = ReaTest::Domain::Position.new(1, 1, :west)
-      new_position = ReaTest::Domain::Position.new(0, 1, :west)
-
-      expect(robot).to receive(:position) { initial_position }
-      expect(robot).to receive(:position=).with(new_position)
-
-      mover = ReaTest::Domain::Mover.new
-      mover.move(robot)
+      it_moves_robot from: ReaTest::Domain::Position.new(1, 1, :west),
+                     to: ReaTest::Domain::Position.new(0, 1, :west)
     end
 
   end

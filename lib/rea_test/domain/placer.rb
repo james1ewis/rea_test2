@@ -7,7 +7,7 @@ module ReaTest
       end
 
       def place(placeable, position)
-        placeable.position = position
+        placeable.position = position unless @table.out_of_bounds? position
       end
     end
 

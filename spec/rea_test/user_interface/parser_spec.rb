@@ -24,21 +24,30 @@ describe ReaTest::UserInterface::Parser do
     end
 
     it 'parses a move command' do
-      parser = ReaTest::UserInterface::Parser.new
-      command = parser.parse('MOVE')
+      command_factory = double('CommandFactory')
 
-      expect(command).to be_a(ReaTest::UserInterface::Command)
-      expect(command.type).to eq(:move)
-      expect(command.parameters).to be_nil
+      expect(command_factory).to receive(:create).with(:move, an_instance_of(Hash))
+
+      parser = ReaTest::UserInterface::Parser.new command_factory: command_factory
+      parser.parse('MOVE')
     end
 
     it 'parses a left command' do
-      parser = ReaTest::UserInterface::Parser.new
-      command = parser.parse('LEFT')
+      command_factory = double('CommandFactory')
 
-      expect(command).to be_a(ReaTest::UserInterface::Command)
-      expect(command.type).to eq(:left)
-      expect(command.parameters).to be_nil
+      expect(command_factory).to receive(:create).with(:left, an_instance_of(Hash))
+
+      parser = ReaTest::UserInterface::Parser.new command_factory: command_factory
+      parser.parse('LEFT')
+    end
+
+    it 'parses a right command' do
+      command_factory = double('CommandFactory')
+
+      expect(command_factory).to receive(:create).with(:right, an_instance_of(Hash))
+
+      parser = ReaTest::UserInterface::Parser.new command_factory: command_factory
+      parser.parse('RIGHT')
     end
 
   end

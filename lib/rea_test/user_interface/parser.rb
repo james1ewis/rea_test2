@@ -13,13 +13,11 @@ module ReaTest
         tokens = text.split(/\s/)
         type = tokens[0].downcase.to_sym
         position = get_position_from(tokens[1]) unless tokens.count == 1
-
-
+        parameters = position.nil? ? { } : { position: position }
 
         case type
-        when :report then @command_factory.create(type, { })
-        when 'PLACE' then Command.new type: :place,
-                                      parameters: { position: position }
+        when :report then @command_factory.create(type, parameters)
+        when :place then @command_factory.create(type, parameters)
         when 'MOVE' then Command.new type: :move
         when 'LEFT' then Command.new type: :left
         when 'RIGHT' then Command.new type: :right

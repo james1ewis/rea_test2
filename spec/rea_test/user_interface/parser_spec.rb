@@ -17,7 +17,7 @@ describe ReaTest::UserInterface::Parser do
       command_factory = double('CommandFactory')
       parameters = { position: ReaTest::Domain::Position.new(1, 2, :north) }
 
-      expect(command_factory).to receive(:create).with(:report, parameters)
+      expect(command_factory).to receive(:create).with(:place, parameters)
 
       parser = ReaTest::UserInterface::Parser.new command_factory: command_factory
       parser.parse('PLACE 1,2,NORTH')

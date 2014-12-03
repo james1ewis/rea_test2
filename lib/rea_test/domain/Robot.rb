@@ -1,4 +1,5 @@
 require_relative 'moveable'
+require_relative 'placer'
 require_relative 'table'
 
 module ReaTest

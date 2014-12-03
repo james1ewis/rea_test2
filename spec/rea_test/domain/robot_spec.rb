@@ -8,9 +8,10 @@ describe ReaTest::Domain::Robot do
       placer = double('Placer')
       position = ReaTest::Domain::Position.new(1, 2, :north)
 
-      expect(placer).to receive(:place).with(position)
+      robot = ReaTest::Domain::Robot.new placer: placer
 
-      robot = Robot.new placer: placer
+      expect(placer).to receive(:place).with(robot)
+
       robot.place(position)
 
       expect(robot.position).to eq(position)

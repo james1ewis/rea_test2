@@ -13,6 +13,11 @@ module ReaTest
 
       def initialize(**args)
         @table = args.fetch(:table, Table.new)
+        @placer = args.fetch(:placer, nil)
+      end
+
+      def place
+        @placer.place(self)
       end
 
       protected

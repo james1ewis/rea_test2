@@ -6,7 +6,9 @@ module ReaTest
         @simulator = args.fetch(:simulator)
       end
 
-
+      def execute
+        @simulator.report
+      end
     end
 
   end

@@ -59,4 +59,20 @@ describe ReaTest::Domain::Robot do
 
   end
 
+  describe '#position=' do
+
+    it 'does not update if the new position is off the table' do
+      table = double('Table')
+      robot = ReaTest::Domain::Robot.new table: table
+      position = ReaTest::Domain::Position.new(-1, -2, :north)
+
+      expect(table).to receive(:out_of_bounds?).with(position) { false }
+
+      robot.position = position
+
+      expect(robot.position).to be_nil
+    end
+
+  end
+
 end

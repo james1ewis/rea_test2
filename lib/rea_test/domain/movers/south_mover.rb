@@ -2,15 +2,17 @@ require_relative 'mover'
 
 module ReaTest
   module Domain
+    module Movers
 
-    class SouthMover < Mover
+      class SouthMover < Mover
 
-      protected
+        protected
 
-      def get_next_position_from(position)
-        Position.new(position.x, position.y - 1, position.heading)
+        def get_next_position_from(position)
+          Position.new(position.x, position.y - 1, position.heading)
+        end
       end
-    end
 
+    end
   end
 end

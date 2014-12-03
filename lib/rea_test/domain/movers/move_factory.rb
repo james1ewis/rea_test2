@@ -5,19 +5,22 @@ require_relative 'west_mover'
 
 module ReaTest
   module Domain
+    module Movers
 
-    class MoveFactory
-      def initialize
-        @mover_mappings = { north: NorthMover,
-                            south: SouthMover,
-                            east: EastMover,
-                            west: WestMover }
+      class MoveFactory
+        def initialize
+          # could loads these dynamically...
+          @mover_mappings = { north: NorthMover,
+                              south: SouthMover,
+                              east: EastMover,
+                              west: WestMover }
+        end
+
+        def create(direction)
+          @mover_mappings[direction].new
+        end
       end
 
-      def create(direction)
-        @mover_mappings[direction].new
-      end
     end
-
   end
 end

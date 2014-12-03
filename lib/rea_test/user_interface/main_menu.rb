@@ -1,4 +1,4 @@
-require_relative 'command_loop'
+require_relative 'command_executor'
 
 module ReaTest
   module UserInterface
@@ -7,13 +7,12 @@ module ReaTest
       def initialize(**args)
         @stdout = args.fetch(:stdout, $stdout)
         @stdin = args.fetch(:stdin, $stdin)
-        @command_loop = args.fetch(:command_loop, CommandLoop.new)
+        @command_executor = args.fetch(:command_executor, CommandExecutor.new)
       end
 
       def run
         display_main_menu
-
-        @command_loop.run unless @user_input == 'EXIT'
+        display_command_loop
       end
 
       private
@@ -22,6 +21,21 @@ module ReaTest
         output 'Enter EXIT to exit at anytime'
         output 'Enter START to start the simulator'
         read_input
+      end
+
+      def display_command_loop
+        until exit?
+          output 'Enter Command: '
+          read_input
+
+          break if exit?
+
+          @command_executor.execute(@user_input)
+        end
+      end
+
+      def exit?
+        @user_input == 'EXIT'
       end
 
       def output(text)

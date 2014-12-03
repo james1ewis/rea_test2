@@ -12,16 +12,17 @@ module ReaTest
       class CommandFactory
         def initialize(**args)
           @simulator = args.fetch(:simulator, ReaTest::Domain::Simulator.new)
+
+          # could just load these dynamically....
+          @commandMappings = { place: PlaceCommand,
+                               report: ReportCommand,
+                               move: MoveCommand,
+                               left: LeftCommand,
+                               right: RightCommand }
         end
 
         def create(type, **parameters)
-          case type
-          when :place then PlaceCommand.new simulator: @simulator, position: parameters[:position]
-          when :report then ReportCommand.new simulator: @simulator
-          when :move then MoveCommand.new simulator: @simulator
-          when :left then LeftCommand.new simulator: @simulator
-          when :right then RightCommand.new simulator: @simulator
-          end
+          @commandMappings[type].new simulator: @simulator, parameters: parameters
         end
       end
 

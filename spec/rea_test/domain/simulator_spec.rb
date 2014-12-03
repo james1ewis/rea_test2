@@ -28,6 +28,15 @@ describe ReaTest::Domain::Simulator do
       expect(simulator.report).to eq(position.to_s)
     end
 
+
+    it 'does not report the position of the robot if it is unplaced' do
+      robot = double('Robot')
+
+      simulator = ReaTest::Domain::Simulator.new robot: robot
+      
+      simulator.report
+    end
+
   end
 
   describe '#move' do

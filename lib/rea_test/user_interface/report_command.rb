@@ -1,8 +1,8 @@
 module ReaTest
   module UserInterface
 
-    class ReportComand
+    class ReportCommand
     end
-    
+
   end
 end

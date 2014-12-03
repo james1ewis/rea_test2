@@ -5,12 +5,8 @@ describe ReaTest::UserInterface::Commands::MoveCommand do
   describe '#execute' do
 
     it 'calls move on the simulator' do
-      simulator = double('Simulator')
-
-      expect(simulator).to receive(:move)
-
-      move = ReaTest::UserInterface::Commands::MoveCommand.new simulator: simulator
-      move.execute
+      calls_simulator_with_expected_message command: ReaTest::UserInterface::Commands::MoveCommand,
+                                            message: :move
     end
 
   end

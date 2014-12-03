@@ -5,12 +5,8 @@ describe ReaTest::UserInterface::Commands::RightCommand do
   describe '#execute' do
 
     it 'calls right on the simulator' do
-      simulator = double('Simulator')
-
-      expect(simulator).to receive(:right)
-
-      right = ReaTest::UserInterface::Commands::RightCommand.new simulator: simulator
-      right.execute
+      calls_simulator_with_expected_message command: ReaTest::UserInterface::Commands::RightCommand,
+                                            message: :right
     end
 
   end

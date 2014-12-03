@@ -5,12 +5,8 @@ describe ReaTest::UserInterface::Commands::ReportCommand do
   describe '#execute' do
 
     it 'calls report on the simulator' do
-      simulator = double('Simulator')
-
-      expect(simulator).to receive(:report)
-
-      report = ReaTest::UserInterface::Commands::ReportCommand.new simulator: simulator
-      report.execute
+      calls_simulator_with_expected_message command: ReaTest::UserInterface::Commands::ReportCommand,
+                                            message: :report
     end
 
   end

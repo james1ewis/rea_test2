@@ -14,9 +14,11 @@ require_relative '../../lib/rea_test/domain/table'
 require_relative '../../lib/rea_test/domain/mover'
 require_relative '../../lib/rea_test/domain/rotater'
 require_relative 'parser_helper'
+require_relative 'command_helper'
 
 require 'rspec'
 
 RSpec.configure do |config|
   config.include ParserHelper
+  config.include CommandHelper
 end

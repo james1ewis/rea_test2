@@ -5,12 +5,8 @@ describe ReaTest::UserInterface::Commands::LeftCommand do
   describe '#execute' do
 
     it 'calls left on the simulator' do
-      simulator = double('Simulator')
-
-      expect(simulator).to receive(:left)
-
-      left = ReaTest::UserInterface::Commands::LeftCommand.new simulator: simulator
-      left.execute
+      calls_simulator_with_expected_message command: ReaTest::UserInterface::Commands::LeftCommand,
+                                            message: :left
     end
 
   end

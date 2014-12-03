@@ -5,12 +5,16 @@ describe ReaTest::Domain::Robot do
   describe '#move' do
 
     it 'moves itself' do
-      mover = double('Mover')
+      move_factory = double('MoveFactory')
+      north_mover = double('NorthMover')
+      position = ReaTest::Domain::Position.new(1, 2, :north)
 
-      robot = ReaTest::Domain::Robot.new mover: mover
+      robot = ReaTest::Domain::Robot.new move_factory: move_factory
 
-      expect(mover).to receive(:move).with(robot)
+      expect(move_factory).to receive(:create).with(:north) { north_mover }
+      expect(north_mover).to receive(:move).with(robot)
 
+      robot.position = position
       robot.move
     end
 

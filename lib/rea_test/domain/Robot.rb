@@ -16,8 +16,8 @@ module ReaTest
         @placer = args.fetch(:placer, nil)
       end
 
-      def place
-        @placer.place(self)
+      def place(position)
+        @placer.place(self, position)
       end
 
       protected

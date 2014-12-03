@@ -10,11 +10,9 @@ describe ReaTest::Domain::Robot do
 
       robot = ReaTest::Domain::Robot.new placer: placer
 
-      expect(placer).to receive(:place).with(robot)
+      expect(placer).to receive(:place).with(robot, position)
 
       robot.place(position)
-
-      expect(robot.position).to eq(position)
     end
 
     context 'the position is within the table bounds' do

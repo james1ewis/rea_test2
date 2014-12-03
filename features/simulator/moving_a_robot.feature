@@ -47,3 +47,17 @@ Feature: Moving a robot
     And I type "REPORT"
     And I close the stdin stream
     Then the output should contain "0,0,WEST"
+
+  Scenario: Robot should not move until placed
+    When I run `robot_simulator` interactively
+    And I type "START"
+    And I type "MOVE"
+    And I type "REPORT"
+    And I close the stdin stream
+    Then the output should contain exactly:
+      """
+      Enter EXIT to exit at anytime
+      Enter START to start the simulator
+      Enter Command:
+      Enter Command:
+      """
